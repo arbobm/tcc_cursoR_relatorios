@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan&family=Open+Sans:wght@300&display=swap');
+
+h1, h2, h3 {
+  font-family: 'League Spartan', sans-serif;
+  color: #272727;
+}
+
+p {
+  font-family: 'League Spartan', sans-serif;
+  color: #272727;
+}
+
+code {
+  color: #000000;
+  font-family: 'Fira Code', monospace;
+  font-weight: bold;
+}
