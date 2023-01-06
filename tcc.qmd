@@ -1,0 +1,610 @@
+---
+title: "tcc"
+format: 
+  html: 
+    css: styles.css
+    code-tools: 
+      source: https://github.com/arbobm/tcc_cursoR_relatorios
+    toc: true
+    toc-location: left
+server: shiny
+code-fold: true
+knitr:
+  opts_chunk: 
+    message: false
+    warning: false
+bibliography: 
+  - ref/referencias.bib
+  - ref/packages.bib
+prefer-html: true
+csl: ref/freshwater-biology.csl
+lang: pt
+number-sections: false
+---
+
+```{r setup}
+
+## ----pacotes-------------------------------------------------------
+# Carregar pacotes:
+library(shiny)
+library(magrittr)
+library(readxl)
+library(ggrepel)
+library(patchwork)
+library(stringr)
+library(dplyr)
+library(leaflet)
+
+## funcoes ------------
+source("funcoes.R")
+
+## cores --------------------------
+
+cores_ucs <- c("PI" = "#9dce45", "US" = "#ffa338")
+labels_ucs <- c("PI" = "Proteção Integral", "US" = "Uso Sutentável")
+labels_areas <- c("UC", "3 km", "10 km") 
+```
+
+```{r load-data}
+
+ano_1 <- "2011"
+ano_2 <- "2021"
+
+ucsjuntas_wgs84 <- sf::read_sf("shapes/UCsFedIcmb_EstMunicMMA_wgs84.shp")
+ucsjuntas_wgs84_dados <- sf::read_sf("shapes/ucsjuntas_wgs84_dados.shp")
+aes_cerpan_wgs84 <- sf::read_sf("shapes/aes_cerpan_wgs84.shp")
+
+ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>% 
+  mutate(classes_colors =
+           case_when(
+             classes == "0 a 5%" ~ "#4575b4", 
+             classes == "5 a 10%" ~ "#91bfdb", 
+             classes == "10 a 25%" ~ "#e0f3f8", 
+             classes == "25 a 40%" ~ "#fee090",
+             classes == "40 a 65%" ~ "#fc8d59", 
+             classes == "> 65%" ~ "#d62f26"
+           )
+  )
+```
+
+# Apresentação
+
+Os Planos de Ação Nacional para a Conservação das Espécies Ameaçadas de Extinção ou do Patrimônio Espeleológico (PANs) são instrumentos de gestão construídos em conjunto com a sociedade, adotados para promover a melhoria do estado de conservação dos ambientes naturais com ocorrência de espécies endêmicas ou ameaçadas de extinção [@icmbioIN212018]. Isso se dá por meio da identificação e orientação das ações prioritárias para combater as ameaças que põem em risco tanto populações de espécies como os ambientes em que vivem. O Centro Nacional de Pesquisa e Conservação de Répteis e Anfíbios (RAN/ICMBio), como uma de suas atribuições, coordena os PANs voltados a conservação da herpetofauna em risco de extinção no Brasil, podendo articular e implementar ações, além de monitorá-las e avaliá-las periodicamente. Mediante oficinas de planejamento participativas e um processo de monitoria e refinamento contínuo, envolvendo o acompanhamento de especialistas nas espécies e nos territórios, objetivos são identificados e, a partir deles, ações são recomendadas e implementadas [@guiaPAN2018].
+
+O objetivo específico deste documento é apoiar a identificação de áreas vulneráveis à perda e fragmentação de hábitat no interior e no entorno das unidades de conservação localizadas em áreas estratégicas do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; @portariacerpan2018). Essa identificação é uma das ações do CERPAN (ação 2.5), que busca promover a proteção e a conectividade dos hábitats das espécies-alvo. Para cumprir esse objetivo, foram estabelecidas as seguintes etapas:
+
+<!-- Etapa 1 -- **Seleção das Unidades de Conservação.** -->
+
+<!-- Lista das unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais localizadas nas áreas estratégicas do CERPAN. -->
+
+<!-- Etapa 2 -- **Reclassificação dos dados do Projeto MapBiomas (`r ano_1` e `r ano_2`)** -->
+
+<!-- Identificação das classes do MapBiomas consideradas hábitat para os grupos de espécies alvo do CERPAN (ictiofauna, herpetofauna e primatas). -->
+
+<!-- Etapa 3 -- **Estimativa da mudança na cobertura do solo em 10 anos** -->
+
+<!-- Álgebra de mapas para a identificação de áreas onde houve mudança e persistência das classes de hábitat e de não hábitat. -->
+
+<!-- Etapa 4 -- **Métricas de paisagem** -->
+
+<!-- Estimativa de métricas de paisagem selecionadas para indicar áreas dentro e no entorno de UCs com perda e aumento da fragmentação de hábitat. -->
+
+<!-- Etapa 5 -- **Resultados preliminares** -->
+
+<!-- Elaboração de tabelas e figuras resultantes das análises e detalhamento das informações em fichas por área estratégica. -->
+
+::: panel-tabset
+## Etapa 1
+
+**Seleção das Unidades de Conservação.**
+
+Lista das unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais localizadas nas áreas estratégicas do CERPAN.
+
+## Etapa 2
+
+**Reclassificação dos dados do Projeto MapBiomas (`r ano_1` e `r ano_2`)**
+
+Identificação das classes do MapBiomas consideradas hábitat para os grupos de espécies alvo do CERPAN (ictiofauna, herpetofauna e primatas).
+
+## Etapa 3
+
+**Estimativa da mudança na cobertura do solo em 10 anos**
+
+Álgebra de mapas para a identificação de áreas onde houve mudança e persistência das classes de hábitat e de não hábitat.
+
+## Etapa 4
+
+**Métricas de paisagem**
+
+Estimativa de métricas de paisagem selecionadas para indicar áreas dentro e no entorno de UCs com perda e aumento da fragmentação de hábitat.
+
+## Etapa 5
+
+**Resultados preliminares**
+
+Elaboração de tabelas e figuras resultantes das análises e detalhamento das informações em fichas por área estratégica.
+:::
+
+# Área de estudo
+
+```{r load-data2}
+#| include: false
+#| echo: false
+
+estados <- geobr::read_state(year = 2020, showProgress = FALSE)
+biomas <- geobr::read_biomes(year = 2019, showProgress = FALSE)
+lim_cerpan <- sf::read_sf("shapes/lim_pans_alb.shp")
+lim_cerpan <- lim_cerpan %>% 
+  dplyr::filter(pan == "PAN Ictiofauna, Herpetofauna e Primatas Ameaçados do Cerrado e Pantanal") %>% 
+  dplyr::mutate(area_km2 = as.numeric(sf::st_area(.))/1000000)
+lim_cerpan_s2k <- sf::st_transform(lim_cerpan, crs = sf::st_crs(estados))
+ucsjuntas <- sf::st_transform(ucsjuntas_wgs84, crs = sf::st_crs(estados))
+aes_cerpan <- sf::st_transform(aes_cerpan_wgs84, crs = sf::st_crs(estados))
+
+estados_cerpan <- sf::st_filter(estados, lim_cerpan_s2k)
+
+tab_uso_solo2021 <- readxl::read_xlsx("planilhas/tab_uso_solo2021.xlsx")
+tab_uso_solo2021 <- tab_uso_solo2021 %>% 
+  arrange(-area_km2)
+
+top5usos <- tab_uso_solo2021 %>% 
+  slice(1:5) %>% 
+  select(classes, area_perc) %>% 
+  mutate(classes = 
+           str_remove_all(classes, "\\d."),
+         classes = 
+           str_remove(classes, "^ "),
+         classes = 
+           str_to_lower(classes),
+         area_perc = 
+           format(round(area_perc, digits = 2), decimal.mark = ",", suffix = "%"),
+         area_perc =
+           str_remove(area_perc, "^ "))
+
+
+
+
+```
+
+O Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; @portariacerpan2018) abrange integral ou parcialmente `r number_to_word(nrow(estados_cerpan))` estados das regiões `r list_names(column = estados_cerpan$name_region)` do Brasil (`r list_names(estados_cerpan$name_state)`), correspondendo a uma área total de aproximadamente `r format(lim_cerpan$area_km2, scientific = FALSE)` km². O CERPAN abrange os biomas cerrado e pantanal, além de parte da bacia dos rios Tocantins e Araguaia, localizada no bioma Amazônia. A cobertura do solo é majoritariamente composta por `r paste0(top5usos[1,1], " (", top5usos[1,2], "%)")`, `r paste0(top5usos[2,1], " (", top5usos[2,2], "%)")`, `r paste0(top5usos[3,1], " (", top5usos[3,2], "%)")`, `r paste0(top5usos[4,1], " (", top5usos[4,2], "%)")` e `r paste0(top5usos[5,1], " (", top5usos[5,2], "%)")` [@mapbiomas2022].
+
+# Metodologia
+
+## Unidades de conservação
+
+As unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais [@ucsmma2022; @ucsicmbio2022] localizadas na área de abrangência do CERPAN foram consideradas. As áreas no entorno das UCs foram delimitadas considerando raios de 3 e 10 km a partir da borda das UCs.
+
+## Cobertura do solo
+
+Os dados de cobertura do solo da Coleção 7 do Projeto MapBiomas [-@mapbiomas2022] referentes aos anos de `r ano_1` e `r ano_2` foram utilizados para estimativa das áreas de hábitat no interior das UCs e nas áreas de entorno. As classes presentes no intervalo de `r number_to_word(as.numeric(ano_2) - as.numeric(ano_1))` anos foram reclassificadas (@tbl-classes). Com isso, as classes de uso e cobertura em cada ano foram categorizadas em hábitat e não hábitat para os grupos de espécies alvo do CERPAN.
+
+```{r}
+#| label: tbl-classes
+#| tbl-cap: "Classes MapBiomas."
+
+classes <- readxl::read_xlsx("legend_mb.xlsx")
+grandes_grupos <- c("1. Floresta", "2. Formação Natural não Florestal", "3. Agropecuária", "3.2. Agricultura", "3.2.1. Lavoura Temporária", "3.2.2. Lavoura Perene", "4. Área não Vegetada", "5. Corpo D'água", "6. Não observado") 
+
+tab1 <- classes %>%
+  select(classes = "COLEÇÃO 7 - CLASSES", 
+         habitat) %>%
+  filter(!classes %in% grandes_grupos) %>% 
+  mutate(classes =
+           stringr::str_replace_all(classes, "\\d+.", ""),
+         habitat = case_when(
+           habitat == 1 ~ "Sim",
+           TRUE ~ "Não"
+         )) 
+
+classes_h <- tab1 %>% 
+  filter(habitat == "Sim") %>% 
+  pull(classes) %>% 
+  stringr::str_replace("^ ", "") %>% 
+  paste0(collapse = ", ")
+
+classes_nh <- tab1 %>% 
+  filter(!habitat == "Sim") %>% 
+  pull(classes) %>% 
+  stringr::str_replace("^ ", "") %>% 
+  paste0(collapse = ", ")
+
+tibble::tibble(Classes = c(classes_h, classes_nh),
+               "Hábitat" = c("Sim", "Não")) %>% 
+  gt::gt()
+
+```
+
+Os arquivos matriciais resultantes dessa reclassificação, os quais possuem *pixels* com valores 1 para hábitat e 0 para não hábitat, foram utilizados em uma série de álgebra de mapas que calcularam, para as áreas das UCs e de seus entornos:
+
+-   a perda de hábitat acumulada até cada ano;
+-   a perda de hábitat em `r number_to_word(as.numeric(ano_2) - as.numeric(ano_1))` anos (entre `r ano_1` e `r ano_2`). Equivale à área que era hábitat no ano 1 e deixou de ser hábitat no ano 2;
+-   o "ganho" de hábitat em `r number_to_word(as.numeric(ano_2) - as.numeric(ano_1))` anos (`r ano_1` - `r ano_2`). Essa medida representa, o que não era hábitat no ano 1 e passou a ser no ano 2, sem especificar os meios pelos quais isso aconteceu nem implicar necessariamente em melhoria do hábitat, por não ser possível avaliar qualidade do sub-bosque, cobertura do solo, etc.;
+-   a área que permaneceu hábitat durante todo o período.
+
+## Métricas de paisagem
+
+Para estimar a fragmentação das áreas de hábitat nas UCs e entorno, foram calculadas seis métricas de paisagem [@R-landscapemetrics]:
+
+-   Área de hábitat (km²):
+    -   é a soma das áreas de todos os fragmentos pertencentes a classe hábitat. A área de hábitat é uma medida absoluta, tornando difícil comparações entre paisagens com áreas totais diferentes, mas permitindo comparações de uma mesma área em anos diferentes;
+-   Porcentagem de remanescentes de hábitat na paisagem:
+    -   é a porcentagem da área de uma paisagem que corresponde a hábitat. Devido ao seu caráter relativo, é diretamente comparável entre paisagens de diferentes áreas;
+-   Número de fragmentos de hábitat:
+    -   descreve a fragmentação do hábitat, apesar de não conter necessariamente informação sobre a configuração do hábitat;
+-   Porcentagem ocupada pelo maior fragmento de hábitat:
+    -   é a porcentagem da paisagem coberta pelo maior fragmento de hábitat. É uma medida simples de dominância;
+-   Área média dos fragmentos de hábitat (km²):
+    -   média de todos os fragmentos de hábitat contidos na área avaliada. É uma forma simples de descrever a composição da paisagem. Se avaliada conjuntamente com a área total de hábitat, pode dar uma ideia de estrutura dos fragmentos (por exemplo, muitos fragmentos pequenos vs. poucos fragmentos grandes);
+-   Tamanho efetivo da malha (km²):
+    -   corresponde a razão entre o quadrado da área do fragmento de hábitat e a área total da paisagem avaliada. É uma medida relativa da estrutura do hábitat. Quanto maior o valor, menor a fragmentação.
+
+Toda a manipulação de dados foi feita utilizando a linguagem `R` [@R; @rstudio] e os pacotes `sf` [@R-sf], `terra` [@R-terra], `landscapemetrics` [@R-landscapemetrics] e `leaflet` [@R-leaflet].
+
+# Fichas para cada área estratégica
+
+Para cada área estratégica do CERPAN, foi elaborada uma ficha com resultados preliminares [Apêndice I](#fichas). As fichas estão divididas em três seções principais:
+
+1.  apresenta a localização da área estratégica dentro da área de abrangência do CERPAN e as unidades de conservação nela localizadas;
+2.  apresenta a taxa de perda de hábitat até 2021 (perda de hábitat acumulada) e taxa de perda de hábitat em 10 anos (2011-2021);
+3.  apresenta as métricas de paisagem calculadas para as áreas de hábitat presentes em 2011, em 2021 e a diferença entre os anos nas UCs e nas áreas do entorno. Valores negativos representam diminuição em 2021 e valores positivos significam que houve aumento.
+
+# Resultados preliminares
+
+## Unidades de conservação e cobertura do solo
+
+```{r}
+# ucs com mais hábitat 
+
+areakm2 <- read_xlsx("planilhas/areakm2_ucs_buf_cerpan2.xlsx")
+# colnames(areakm2)
+nucs <- areakm2 %>% 
+  filter(area == "uc") %>% 
+  nrow
+
+ucs_aes <- areakm2 %>%
+  left_join(ucsjuntas) %>%   
+  mutate(
+      ae =
+      dplyr::case_when(stringr::str_detect(.$ae, "^Maranhão") ~ "Maranhão-Pará",
+                       stringr::str_detect(.$ae, "^Matop") ~ "Matopiba",
+                       stringr::str_detect(.$ae, "^Cerrado P") ~ "Cerrado Paulista",
+                       stringr::str_detect(.$ae, "^Vead") ~ "Veadeiros",
+                       stringr::str_detect(.$ae, "^Tocan") ~ "Tocantins",
+                       TRUE ~ ae)) %>% 
+  select(cnuc, nome_abrev, ae, estado, grupo, esfera) %>% 
+  distinct()
+
+
+tab_uc_habitat <- areakm2 %>%
+  left_join(ucsjuntas) %>% 
+  dplyr::mutate(
+    habitat2021_per = (habitat2021/area_km2)*100,
+    ae =
+      dplyr::case_when(stringr::str_detect(.$ae, "^Maranhão") ~ "Maranhão-Pará",
+                       stringr::str_detect(.$ae, "^Matop") ~ "Matopiba",
+                       stringr::str_detect(.$ae, "^Cerrado P") ~ "Cerrado Paulista",
+                       stringr::str_detect(.$ae, "^Vead") ~ "Veadeiros",
+                       stringr::str_detect(.$ae, "^Tocan") ~ "Tocantins",
+                       TRUE ~ ae),
+    # indperda = indperda * 100,
+    # indperdaacum = indperdaacum * 100,
+    esfera = str_to_title(esfera)) %>% 
+  select(nome_abrev, ae, area, grupo, esfera, habitat2021_per) %>% 
+  tidyr::pivot_wider(id_cols = c(nome_abrev, ae, grupo, esfera),
+                     names_from = area,
+                     values_from = habitat2021_per) %>% 
+  filter(uc > 99) %>% 
+  arrange(-uc) 
+  # slice_head(n = 20) 
+
+
+nucs_habitat99 <- nrow(tab_uc_habitat)
+nucs_habitat99_p <- format(round((nucs_habitat99/nucs)*100, digits = 2), decimal.mark=",")
+```
+
+Ao todo, formam analisadas `r nucs` unidades de conservação. Destas, `r nucs_habitat99` (`r nucs_habitat99_p`%) tem mais de 99% de hábitat no interior da UC (@tbl-habitatucs), sendo que `r number_to_word(nrow(filter(tab_uc_habitat, buf3k < 80)))` tem menos de 80% de hábitat no raio de 3 km a partir da borda da UC (três são UCs de proteção integral; @tbl-habitatucs e @fig-habitatucs).
+
+```{r}
+#| label: tbl-habitatucs
+#| tbl-cap: "Unidades de Conservação (UC) com mais de 99% de hábitat no seu interior e no entorno em raios de 3 e 10 km a partir da borda da UC."
+
+tab_uc_habitat %>% 
+  select(nome_abrev, ae, grupo, esfera, uc, buf3k, buf10k) %>% 
+  gt::gt()
+
+
+```
+
+```{r}
+#| label: fig-habitatucs
+#| fig-cap: "Relação entre a porcentagem de hábitat no interior das Unidade de Conservação (UC) com mais de 99% de hábitat e o entorno em raios de 3 e 10 km a partir da borda da UC."
+
+plotly::ggplotly(
+  tab_uc_habitat %>% 
+    tidyr::pivot_longer(cols = buf10k:uc) %>% 
+    mutate(name = factor(name, levels = c("uc", "buf3k", "buf10k"),
+                         labels = labels_areas),
+           esfera = factor(esfera, levels = c("Federal", "Estadual", "Municipal"))) %>% 
+    ggplot(aes(x = name, y = value, group = nome_abrev, color = grupo)) +
+    geom_line(linewidth = 0.7) +
+    facet_wrap(vars(esfera)) +
+    scale_color_manual(values = cores_ucs,
+                       labels = labels_ucs,
+                       "Unidades de Conservação") +
+    labs(y = "Área de hábitat (%)", x = "Limite") +
+    theme_bw() +
+    theme(panel.grid = element_blank(),
+          legend.position = "bottom")
+)
+```
+
+```{r}
+
+tab_uc_perda <- areakm2 %>%
+  left_join(ucsjuntas) %>%
+  dplyr::mutate(ae =
+                  dplyr::case_when(stringr::str_detect(.$ae, "^Maranhão") ~ "Maranhão-Pará",
+                                   stringr::str_detect(.$ae, "^Matop") ~ "Matopiba",
+                                   stringr::str_detect(.$ae, "^Cerrado P") ~ "Cerrado Paulista",
+                                   stringr::str_detect(.$ae, "^Vead") ~ "Veadeiros",
+                                   stringr::str_detect(.$ae, "^Tocan") ~ "Tocantins",
+                                   TRUE ~ ae),
+                indperda = indperda * 100,
+                indperdaacum = indperdaacum * 100,
+                esfera = str_to_title(esfera)) %>% 
+  select(nome_abrev, ae, area, grupo, esfera, indperda) %>%
+  tidyr::pivot_wider(id_cols = c(nome_abrev, ae, grupo, esfera),
+                     names_from = area,
+                     values_from = indperda) %>% 
+  select(nome_abrev, ae, grupo, esfera, uc, buf3k, buf10k) %>% 
+  filter(uc > 5) %>% 
+  arrange(-uc)
+
+
+
+
+```
+
+A UC REVIS Padre Sérgio Tonetto foi a UC com maior perda de hábitat em 10 anos. Esse resultado, porém, tem origem em um possível erro de interpretação da cobertura do solo na unidade de conservação nos dados referentes a 2021. Essa observação será reportada no [fórum oficial](https://forum.mapbiomas.org/) do Projeto MapBiomas e avaliada posteriormente.
+
+Outras `r nrow(tab_uc_perda)-1` UCs tiveram mais de 5% de suas áreas convertidas para classes de cobertura do solo consideradas como não hábitat. Algumas UCs apresentaram perda de hábitat no interior da UC maior do que no entorno (@tbl-perdaucs e @fig-perdaucs).
+
+```{r}
+#| label: tbl-perdaucs
+#| tbl-cap: "Unidades de Conservação (UC) com mais de 5% de perda de hábitat em 10 anos no seu interior e no entorno em raios de 3 e 10 km a partir da borda da UC."
+
+
+# ucs com maiores perda de hábitat relativa
+
+# colnames(areakm2)
+
+# perda recente
+tab_uc_perda %>% 
+  gt::gt()
+  
+```
+
+```{r}
+#| label: fig-perdaucs
+#| fig-cap: "Relação entre a perda de hábitat em 10 anos no interior das Unidade de Conservação (UC) com mais de 5% da área convertida e o entorno em raios de 3 e 10 km a partir da borda da UC."
+
+plotly::ggplotly(
+  tab_uc_perda %>%
+    filter(!nome_abrev == "REVIS Padre Sérgio Tonetto") %>% 
+    tidyr::pivot_longer(cols = uc:buf10k) %>% 
+    mutate(name = factor(name, levels = c("uc", "buf3k", "buf10k"),
+                         labels = labels_areas),
+           esfera = factor(esfera, levels = c("Federal", "Estadual", "Municipal"))) %>% 
+    ggplot(aes(x = name, y = value, group = nome_abrev, color = grupo)) +
+    geom_line(linewidth = 0.7) +
+    facet_wrap(vars(esfera)) +
+    scale_color_manual(values = cores_ucs,
+                       labels = labels_ucs,
+                       "Unidades de Conservação") +
+    labs(y = "Perda de hábitat (%)", x = "Limite") +
+    theme_bw() +
+    theme(panel.grid = element_blank(),
+          legend.position = "bottom")
+)
+
+```
+
+## Métricas de paisagem
+
+A unidade de conservação que mais perdeu área de hábitat em 10 anos, em números absolutos, a APA da Baixada Maranhense, localizada na área estratégica denominada Maranhão-Pará, também foi a que mais aumentou em número de fragmentos no interior da UC. A @tbl-ucsmetricasp mostra os resultados de todas as métricas de paisagem para as 20 UCs que tiveram maior perda de tamanho efetivo da malha de hábitat no interior da UC.
+
+```{r}
+#| label: tbl-ucsmetricasp
+#| tbl-cap: "Métricas da paisagem das 20 unidades de conservação com maior perda de malha efetiva de hábitat no interior das Unidades de Conservação. Os valores correspondem a diferença entre os anos de 2021 e 2011. Valores negativos representam diminuição em 10 anos, e resultados positivos representam aumento."
+
+# ucs_aes
+
+metricas <- read_xlsx("planilhas/metrics_w_dif.xlsx")
+
+metricas %>% 
+  left_join(ucs_aes) %>% 
+  filter(area == "uc",
+         ano == "2011-2021",
+         !is.na(ae)) %>%
+      dplyr::mutate(ae =
+                  dplyr::case_when(stringr::str_detect(.$ae, "^Maranhão") ~ "Maranhão-Pará",
+                                   stringr::str_detect(.$ae, "^Matop") ~ "Matopiba",
+                                   stringr::str_detect(.$ae, "^Cerrado P") ~ "Cerrado Paulista",
+                                   stringr::str_detect(.$ae, "^Vead") ~ "Veadeiros",
+                                   stringr::str_detect(.$ae, "^Tocan") ~ "Tocantins",
+                                   stringr::str_detect(.$ae, "^Parana") ~ "Paranaíba",
+                                   TRUE ~ ae),
+                  esfera = str_to_title(esfera)
+  ) %>% 
+  arrange(mesh) %>%
+  slice_head(n = 20) %>% 
+  select(nome_abrev, ae, grupo, esfera, ca, np:mesh) %>% 
+  gt::gt()
+```
+
+# Próximos passos
+
+-   Relacionar os resultados entre as áreas avaliadas (interior da UC, entornos nos raios de 3 e 10 km) para entender quais UCs estão sob maior pressão de aumento da fragmentação;
+-   Identificar UCs mais críticas;
+-   Comparar se há diferenças entre os resultados das UCs dos diferentes grupos (proteção integral e uso sustentável) assim como nas diferentes esferas (federal, estadual e municipal);
+-   Melhorar a visualização das áreas estratégicas com poucas UCs e/ou UCs muito pequenas;
+-   Finalizar análises e discussão para relatório final.
+
+# Visualização dos resultados
+
+<!-- leaflet -->
+
+```{r}
+
+# 
+# 
+# leaflet() %>%
+#   addTiles() %>%
+# 
+#   ## add limite do cerpan
+#   addPolygons(
+#     data = lim_cerpan_s2k,
+#     fillOpacity = 0,
+#     color = "gray",
+#     weight = 1
+#   ) %>%
+# 
+#   ## add limites das áreas estratégicas
+#   addPolygons(
+#     data = aes_cerpan,
+#     fillOpacity = 0,
+#     color = "darkgray",
+#     weight = 1
+#   ) %>%
+# 
+#   # add ucs
+#   addPolygons(
+#     data = ucsjuntas_wgs84_dados,
+#     fillColor = ucsjuntas_wgs84_dados$classes_colors,
+#     fillOpacity = 1,
+#     weight = 1
+#   )
+
+
+```
+
+```{r}
+#| panel: sidebar
+
+
+# selectInput('xcol', 'X Variable', vars)
+# selectInput('ycol', 'Y Variable', vars, selected = vars[[2]])
+# numericInput('clusters', 'Cluster count', 3, min = 1, max = 9)
+
+
+vars <- unique(sort(aes_cerpan_wgs84$nome_AE))
+selectizeInput(inputId = "aes", 
+               label = h4("Áreas estratégicas:"), 
+               choices = vars, 
+               multiple = FALSE # TÁ DANDO ERRO COM TRUE... CORRIGIR
+               # multiple = TRUE
+)
+```
+
+```{r}
+#| panel: fill
+
+# plotOutput('plot1')
+leafletOutput("map")
+```
+
+```{r}
+#| context: server
+
+library(shinydashboard)
+aes_cerpan_wgs84 <- sf::read_sf("shapes/aes_cerpan_wgs84.shp")
+ucsjuntas_wgs84_dados <- sf::read_sf("shapes/ucsjuntas_wgs84_dados.shp")
+
+ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>% 
+  mutate(classes_colors =
+           case_when(
+             classes == "0 a 5%" ~ "#4575b4", 
+             classes == "5 a 10%" ~ "#91bfdb", 
+             classes == "10 a 25%" ~ "#e0f3f8", 
+             classes == "25 a 40%" ~ "#fee090",
+             classes == "40 a 65%" ~ "#fc8d59", 
+             classes == "> 65%" ~ "#d62f26"
+           )
+  )
+
+
+selectedData <- shiny::eventReactive(input$aes, {
+  aes_cerpan_wgs84 %>% 
+    # dplyr::filter(nome_AE == "Araguaia")
+    dplyr::filter(nome_AE == input$aes)
+})
+
+# output$plot1 <- renderPlot({
+#   palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+#     "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
+# 
+#   par(mar = c(5.1, 4.1, 0, 1))
+#   plot(selectedData(),
+#        col = clusters()$cluster,
+#        pch = 20, cex = 3)
+#   points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
+# })
+
+output$map <- renderLeaflet({
+  
+  leaflet() %>% 
+    addMapPane("background", zIndex = 0) %>%        # Level 1: bottom
+    addMapPane("polygons", zIndex = 1) %>%          # Level 2: middle
+    addMapPane("rasters", zIndex = 100000) %>%      # Level 3: middle
+    addMapPane("points", zIndex = 440) %>%          # Level 4: middle
+    addMapPane("labels", zIndex = 450) %>%          # Level 5: top
+    
+    addWMSTiles('http://ows.mundialis.de/services/service?', layers='TOPO-WMS', group="Topography", options = pathOptions(pane = "background")) %>%
+    addProviderTiles(providers$Esri.WorldStreetMap, group="Open Street Map", options = pathOptions(pane = "background")) %>%
+    addProviderTiles(providers$Esri.WorldTerrain, group="Terrain", options = pathOptions(pane = "background")) %>%
+    addProviderTiles(providers$Esri.WorldImagery, group="Satellite", options = pathOptions(pane = "background")) %>%
+    
+    
+    addLayersControl(
+      baseGroups = c("Satellite","Terrain",  "Topography", "Open Street Map"), 
+      overlayGroups = c("Mudanças", "Boundaries", "Labels"), 
+      options = layersControlOptions(collapsed = F, position = "bottomright")
+    ) %>%
+    addScaleBar(position = c("bottomleft"), options = scaleBarOptions()) %>% 
+    # 
+    # ## add limite do cerpan
+    # addPolygons(
+    #   data = lim_cerpan_s2k,
+    #   fillOpacity = 0,
+    #   color = "gray",
+    #   weight = 1
+    # ) %>% 
+    # 
+    ## add limites das áreas estratégicas
+    addPolygons(
+      data = selectedData(),
+      # data = aes_cerpan,
+      fillOpacity = 0,
+      color = "darkgray",
+      weight = 1
+    ) 
+  # %>% 
+    
+    # # add ucs
+    # addPolygons(
+    #   data = ucsjuntas_wgs84_dados,
+    #   fillColor = ucsjuntas_wgs84_dados$classes_colors,
+    #   fillOpacity = 1,
+    #   weight = 1
+    # )
+  
+})
+
+```
+
+# Referências
+
+::: {#refs}
+:::
+
+
