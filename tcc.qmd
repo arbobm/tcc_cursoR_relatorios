@@ -4,7 +4,7 @@ format:
   html: 
     css: styles.css
     code-tools: 
-      source: https://github.com/arbobm/tcc_cursoR_relatorios
+      source: https://github.com/arbobm/tcc_cursoR_relatorios/blob/main/tcc.qmd
     toc: true
     toc-location: left
 server: shiny
@@ -132,7 +132,6 @@ Elaboração de tabelas e figuras resultantes das análises e detalhamento das i
 #| echo: false
 
 estados <- geobr::read_state(year = 2020, showProgress = FALSE)
-biomas <- geobr::read_biomes(year = 2019, showProgress = FALSE)
 lim_cerpan <- sf::read_sf("shapes/lim_pans_alb.shp")
 lim_cerpan <- lim_cerpan %>% 
   dplyr::filter(pan == "PAN Ictiofauna, Herpetofauna e Primatas Ameaçados do Cerrado e Pantanal") %>% 
@@ -319,7 +318,7 @@ tab_uc_habitat %>%
 #| label: fig-habitatucs
 #| fig-cap: "Relação entre a porcentagem de hábitat no interior das Unidade de Conservação (UC) com mais de 99% de hábitat e o entorno em raios de 3 e 10 km a partir da borda da UC."
 
-plotly::ggplotly(
+# plotly::ggplotly(
   tab_uc_habitat %>% 
     tidyr::pivot_longer(cols = buf10k:uc) %>% 
     mutate(name = factor(name, levels = c("uc", "buf3k", "buf10k"),
@@ -335,7 +334,7 @@ plotly::ggplotly(
     theme_bw() +
     theme(panel.grid = element_blank(),
           legend.position = "bottom")
-)
+# )
 ```
 
 ```{r}
@@ -388,7 +387,7 @@ tab_uc_perda %>%
 #| label: fig-perdaucs
 #| fig-cap: "Relação entre a perda de hábitat em 10 anos no interior das Unidade de Conservação (UC) com mais de 5% da área convertida e o entorno em raios de 3 e 10 km a partir da borda da UC."
 
-plotly::ggplotly(
+# plotly::ggplotly(
   tab_uc_perda %>%
     filter(!nome_abrev == "REVIS Padre Sérgio Tonetto") %>% 
     tidyr::pivot_longer(cols = uc:buf10k) %>% 
@@ -405,7 +404,7 @@ plotly::ggplotly(
     theme_bw() +
     theme(panel.grid = element_blank(),
           legend.position = "bottom")
-)
+# )
 
 ```
 
@@ -491,18 +490,13 @@ metricas %>%
 ```{r}
 #| panel: sidebar
 
-
-# selectInput('xcol', 'X Variable', vars)
-# selectInput('ycol', 'Y Variable', vars, selected = vars[[2]])
-# numericInput('clusters', 'Cluster count', 3, min = 1, max = 9)
-
-
-vars <- unique(sort(aes_cerpan_wgs84$nome_AE))
+vars <- c("Todas", unique(sort(aes_cerpan_wgs84$nome_AE)))
 selectizeInput(inputId = "aes", 
                label = h4("Áreas estratégicas:"), 
                choices = vars, 
-               multiple = FALSE # TÁ DANDO ERRO COM TRUE... CORRIGIR
-               # multiple = TRUE
+               multiple = FALSE, # TÁ DANDO ERRO COM TRUE... CORRIGIR
+               # multiple = TRUE,
+               selected = vars[1]
 )
 ```
 
@@ -533,10 +527,32 @@ ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>%
   )
 
 
-selectedData <- shiny::eventReactive(input$aes, {
+selectedData_ae <- shiny::eventReactive(input$aes, {
+  
+  if (input$aes == "Todas") {
+    
+    aes_cerpan_wgs84
+    
+  } else {
+  
   aes_cerpan_wgs84 %>% 
     # dplyr::filter(nome_AE == "Araguaia")
     dplyr::filter(nome_AE == input$aes)
+  }
+})
+
+selectedData_uc <- shiny::eventReactive(input$aes, {
+  
+  if (input$aes == "Todas") {
+    
+    ucsjuntas_wgs84_dados
+    
+  } else {
+  
+  ucsjuntas_wgs84_dados %>% 
+    # dplyr::filter(str_detect(ae, "Araguaia"))
+    dplyr::filter(str_detect(ae, input$aes))
+  }
 })
 
 # output$plot1 <- renderPlot({
@@ -566,8 +582,7 @@ output$map <- renderLeaflet({
     
     
     addLayersControl(
-      baseGroups = c("Satellite","Terrain",  "Topography", "Open Street Map"), 
-      overlayGroups = c("Mudanças", "Boundaries", "Labels"), 
+      baseGroups = c("Satellite", "Terrain", "Topography", "Open Street Map"),
       options = layersControlOptions(collapsed = F, position = "bottomright")
     ) %>%
     addScaleBar(position = c("bottomleft"), options = scaleBarOptions()) %>% 
@@ -580,24 +595,25 @@ output$map <- renderLeaflet({
     #   weight = 1
     # ) %>% 
     # 
-    ## add limites das áreas estratégicas
+    # ## add limites das áreas estratégicas
     addPolygons(
-      data = selectedData(),
+      data = selectedData_ae(),
       # data = aes_cerpan,
       fillOpacity = 0,
       color = "darkgray",
-      weight = 1
-    ) 
-  # %>% 
+      weight = 1,
+      group = "polygons"
+    ) %>% 
     
-    # # add ucs
-    # addPolygons(
-    #   data = ucsjuntas_wgs84_dados,
-    #   fillColor = ucsjuntas_wgs84_dados$classes_colors,
-    #   fillOpacity = 1,
-    #   weight = 1
-    # )
-  
+    # add ucs
+    addPolygons(
+      data = selectedData_uc(),
+      fillColor = selectedData_uc()$classes_colors,
+      fillOpacity = 1,
+      weight = 1,
+      group = "polygons"
+    )
+
 })
 
 ```
