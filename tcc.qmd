@@ -1,5 +1,6 @@
 ---
-title: "tcc"
+title: "Perda de hábitat nas Unidades de Conservação do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN)"
+author: "Bruna Meneses, Lara Cortes, Flavia Batista (RAN/ICMBio)"
 format: 
   html: 
     css: styles.css
@@ -8,7 +9,7 @@ format:
     toc: true
     toc-location: left
 server: shiny
-code-fold: true
+# code-fold: true
 knitr:
   opts_chunk: 
     message: false
@@ -26,6 +27,7 @@ number-sections: false
 
 ## ----pacotes-------------------------------------------------------
 # Carregar pacotes:
+
 library(shiny)
 library(magrittr)
 library(readxl)
@@ -38,11 +40,13 @@ library(leaflet)
 ## funcoes ------------
 source("funcoes.R")
 
-## cores --------------------------
+## labels --------------------------
 
 cores_ucs <- c("PI" = "#9dce45", "US" = "#ffa338")
 labels_ucs <- c("PI" = "Proteção Integral", "US" = "Uso Sutentável")
 labels_areas <- c("UC", "3 km", "10 km") 
+
+
 ```
 
 ```{r load-data}
@@ -65,33 +69,14 @@ ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>%
              classes == "> 65%" ~ "#d62f26"
            )
   )
+
 ```
 
 # Apresentação
 
 Os Planos de Ação Nacional para a Conservação das Espécies Ameaçadas de Extinção ou do Patrimônio Espeleológico (PANs) são instrumentos de gestão construídos em conjunto com a sociedade, adotados para promover a melhoria do estado de conservação dos ambientes naturais com ocorrência de espécies endêmicas ou ameaçadas de extinção [@icmbioIN212018]. Isso se dá por meio da identificação e orientação das ações prioritárias para combater as ameaças que põem em risco tanto populações de espécies como os ambientes em que vivem. O Centro Nacional de Pesquisa e Conservação de Répteis e Anfíbios (RAN/ICMBio), como uma de suas atribuições, coordena os PANs voltados a conservação da herpetofauna em risco de extinção no Brasil, podendo articular e implementar ações, além de monitorá-las e avaliá-las periodicamente. Mediante oficinas de planejamento participativas e um processo de monitoria e refinamento contínuo, envolvendo o acompanhamento de especialistas nas espécies e nos territórios, objetivos são identificados e, a partir deles, ações são recomendadas e implementadas [@guiaPAN2018].
 
-O objetivo específico deste documento é apoiar a identificação de áreas vulneráveis à perda e fragmentação de hábitat no interior e no entorno das unidades de conservação localizadas em áreas estratégicas do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; @portariacerpan2018). Essa identificação é uma das ações do CERPAN (ação 2.5), que busca promover a proteção e a conectividade dos hábitats das espécies-alvo. Para cumprir esse objetivo, foram estabelecidas as seguintes etapas:
-
-<!-- Etapa 1 -- **Seleção das Unidades de Conservação.** -->
-
-<!-- Lista das unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais localizadas nas áreas estratégicas do CERPAN. -->
-
-<!-- Etapa 2 -- **Reclassificação dos dados do Projeto MapBiomas (`r ano_1` e `r ano_2`)** -->
-
-<!-- Identificação das classes do MapBiomas consideradas hábitat para os grupos de espécies alvo do CERPAN (ictiofauna, herpetofauna e primatas). -->
-
-<!-- Etapa 3 -- **Estimativa da mudança na cobertura do solo em 10 anos** -->
-
-<!-- Álgebra de mapas para a identificação de áreas onde houve mudança e persistência das classes de hábitat e de não hábitat. -->
-
-<!-- Etapa 4 -- **Métricas de paisagem** -->
-
-<!-- Estimativa de métricas de paisagem selecionadas para indicar áreas dentro e no entorno de UCs com perda e aumento da fragmentação de hábitat. -->
-
-<!-- Etapa 5 -- **Resultados preliminares** -->
-
-<!-- Elaboração de tabelas e figuras resultantes das análises e detalhamento das informações em fichas por área estratégica. -->
+O objetivo deste documento é identificação as unidades de conservação com maiores perdas de área de hábitat até 2021 e, assim, apoiar a identificação de áreas vulneráveis à perda e fragmentação de hábitat no interior e no entorno das unidades de conservação localizadas em áreas estratégicas do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; @portariacerpan2018). Essa identificação é uma das ações do CERPAN (ação 2.5), que busca promover a proteção e a conectividade dos hábitats das espécies-alvo. Para cumprir esse objetivo, foram estabelecidas as seguintes etapas:
 
 ::: panel-tabset
 ## Etapa 1
@@ -112,13 +97,13 @@ Identificação das classes do MapBiomas consideradas hábitat para os grupos de
 
 Álgebra de mapas para a identificação de áreas onde houve mudança e persistência das classes de hábitat e de não hábitat.
 
+<!-- ## Etapa 4 -->
+
+<!-- **Métricas de paisagem** -->
+
+<!-- Estimativa de métricas de paisagem selecionadas para indicar áreas dentro e no entorno de UCs com perda e aumento da fragmentação de hábitat. -->
+
 ## Etapa 4
-
-**Métricas de paisagem**
-
-Estimativa de métricas de paisagem selecionadas para indicar áreas dentro e no entorno de UCs com perda e aumento da fragmentação de hábitat.
-
-## Etapa 5
 
 **Resultados preliminares**
 
@@ -131,7 +116,7 @@ Elaboração de tabelas e figuras resultantes das análises e detalhamento das i
 #| include: false
 #| echo: false
 
-estados <- geobr::read_state(year = 2020, showProgress = FALSE)
+estados <- sf::read_sf("shapes/BR_UF_2021.shp")
 lim_cerpan <- sf::read_sf("shapes/lim_pans_alb.shp")
 lim_cerpan <- lim_cerpan %>% 
   dplyr::filter(pan == "PAN Ictiofauna, Herpetofauna e Primatas Ameaçados do Cerrado e Pantanal") %>% 
@@ -165,23 +150,23 @@ top5usos <- tab_uso_solo2021 %>%
 
 ```
 
-O Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; @portariacerpan2018) abrange integral ou parcialmente `r number_to_word(nrow(estados_cerpan))` estados das regiões `r list_names(column = estados_cerpan$name_region)` do Brasil (`r list_names(estados_cerpan$name_state)`), correspondendo a uma área total de aproximadamente `r format(lim_cerpan$area_km2, scientific = FALSE)` km². O CERPAN abrange os biomas cerrado e pantanal, além de parte da bacia dos rios Tocantins e Araguaia, localizada no bioma Amazônia. A cobertura do solo é majoritariamente composta por `r paste0(top5usos[1,1], " (", top5usos[1,2], "%)")`, `r paste0(top5usos[2,1], " (", top5usos[2,2], "%)")`, `r paste0(top5usos[3,1], " (", top5usos[3,2], "%)")`, `r paste0(top5usos[4,1], " (", top5usos[4,2], "%)")` e `r paste0(top5usos[5,1], " (", top5usos[5,2], "%)")` [@mapbiomas2022].
+O Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; @portariacerpan2018) abrange integral ou parcialmente `r number_to_word(nrow(estados_cerpan))` estados das regiões `r list_names(column = estados_cerpan$NM_REGIAO)` do Brasil (`r list_names(estados_cerpan$NM_UF)`), correspondendo a uma área total de aproximadamente `r format(lim_cerpan$area_km2, scientific = FALSE, big.mark = ".")` km². O CERPAN abrange os biomas cerrado e pantanal, além de parte da bacia dos rios Tocantins e Araguaia, localizada no bioma Amazônia. A cobertura do solo é majoritariamente composta por `r paste0(top5usos[1,1], " (", top5usos[1,2], "%)")`, `r paste0(top5usos[2,1], " (", top5usos[2,2], "%)")`, `r paste0(top5usos[3,1], " (", top5usos[3,2], "%)")`, `r paste0(top5usos[4,1], " (", top5usos[4,2], "%)")` e `r paste0(top5usos[5,1], " (", top5usos[5,2], "%)")` [@mapbiomas2022].
 
 # Metodologia
 
 ## Unidades de conservação
 
-As unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais [@ucsmma2022; @ucsicmbio2022] localizadas na área de abrangência do CERPAN foram consideradas. As áreas no entorno das UCs foram delimitadas considerando raios de 3 e 10 km a partir da borda das UCs.
+As unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais [@ucsmma2022; @ucsicmbio2022] localizadas na área de abrangência do CERPAN foram consideradas. 
 
 ## Cobertura do solo
 
-Os dados de cobertura do solo da Coleção 7 do Projeto MapBiomas [-@mapbiomas2022] referentes aos anos de `r ano_1` e `r ano_2` foram utilizados para estimativa das áreas de hábitat no interior das UCs e nas áreas de entorno. As classes presentes no intervalo de `r number_to_word(as.numeric(ano_2) - as.numeric(ano_1))` anos foram reclassificadas (@tbl-classes). Com isso, as classes de uso e cobertura em cada ano foram categorizadas em hábitat e não hábitat para os grupos de espécies alvo do CERPAN.
+Os dados de cobertura do solo da Coleção 7 do Projeto MapBiomas [-@mapbiomas2022] referentes aos anos de `r ano_1` e `r ano_2` foram utilizados para estimativa das áreas de hábitat no interior das UCs e nas áreas de entorno. As classes presentes no intervalo de `r number_to_word(as.numeric(ano_2) - as.numeric(ano_1))` anos foram reclassificadas (@tbl-classes). Com isso, as classes de uso e cobertura em cada ano foram categorizadas em hábitat e não hábitat para os grupos de espécies alvo do CERPAN. Este documento apresenta uma parte desses resultados, referentes a percentagem de perda de hábitat acumulada em cada UC até 2021.
 
 ```{r}
 #| label: tbl-classes
 #| tbl-cap: "Classes MapBiomas."
 
-classes <- readxl::read_xlsx("legend_mb.xlsx")
+classes <- readxl::read_xlsx("planilhas/legend_mb.xlsx")
 grandes_grupos <- c("1. Floresta", "2. Formação Natural não Florestal", "3. Agropecuária", "3.2. Agricultura", "3.2.1. Lavoura Temporária", "3.2.2. Lavoura Perene", "4. Área não Vegetada", "5. Corpo D'água", "6. Não observado") 
 
 tab1 <- classes %>%
@@ -209,7 +194,11 @@ classes_nh <- tab1 %>%
 
 tibble::tibble(Classes = c(classes_h, classes_nh),
                "Hábitat" = c("Sim", "Não")) %>% 
-  gt::gt()
+  gt::gt() %>% 
+  gt::cols_label(
+    Classes = gt::md("**Classes**"),
+    "Hábitat" = gt::md("**Hábitat**")
+  )
 
 ```
 
@@ -308,8 +297,25 @@ Ao todo, formam analisadas `r nucs` unidades de conservação. Destas, `r nucs_h
 #| tbl-cap: "Unidades de Conservação (UC) com mais de 99% de hábitat no seu interior e no entorno em raios de 3 e 10 km a partir da borda da UC."
 
 tab_uc_habitat %>% 
-  select(nome_abrev, ae, grupo, esfera, uc, buf3k, buf10k) %>% 
-  gt::gt()
+  select(nome_abrev, ae, grupo, esfera, uc
+         # , buf3k, buf10k
+         ) %>% 
+  gt::gt() %>% 
+  gt::fmt_number(
+    columns = uc,
+    decimals = 0,
+    dec_mark = ","
+  ) %>% 
+  gt::cols_label(
+    nome_abrev = gt::md("**Unidade de Conservação**"),
+    ae = gt::md("**Área estratégica**"),
+    grupo = gt::md("**Grupo**"),
+    esfera = gt::md("**Esfera**"),
+    uc = gt::md("**Hábitat (%)**")
+    # ,
+    # ae = gt::md("**Área estratégica**"),
+    # ae = gt::md("**Área estratégica**"),
+  )
 
 
 ```
@@ -379,7 +385,20 @@ Outras `r nrow(tab_uc_perda)-1` UCs tiveram mais de 5% de suas áreas convertida
 
 # perda recente
 tab_uc_perda %>% 
-  gt::gt()
+  select(nome_abrev:uc) %>% 
+  gt::gt() %>% 
+  gt::fmt_number(
+    columns = uc,
+    decimals = 0,
+    dec_mark = ","
+  ) %>% 
+  gt::cols_label(
+    nome_abrev = gt::md("**Unidade de Conservação**"),
+    ae = gt::md("**Área estratégica**"),
+    grupo = gt::md("**Grupo**"),
+    esfera = gt::md("**Esfera**"),
+    uc = gt::md("**Não hábitat (%)**")
+  )
   
 ```
 
@@ -438,7 +457,24 @@ metricas %>%
   arrange(mesh) %>%
   slice_head(n = 20) %>% 
   select(nome_abrev, ae, grupo, esfera, ca, np:mesh) %>% 
-  gt::gt()
+  gt::gt() %>% 
+  gt::fmt_number(
+    columns = ca:mesh,
+    decimals = 2,
+    dec_mark = ",",
+    sep_mark = "."
+  ) %>% 
+  gt::cols_label(
+    nome_abrev = gt::md("**Unidade de Conservação**"),
+    ae = gt::md("**Área estratégica**"),
+    grupo = gt::md("**Grupo**"),
+    esfera = gt::md("**Esfera**"),
+    ca = gt::md("**ca**"),
+    np = gt::md("**np**"),
+    lpi = gt::md("**lpi**"),
+    area_mn = gt::md("**area_mn**"),
+    mesh = gt::md("**mesh**")
+  )
 ```
 
 # Próximos passos
@@ -541,6 +577,25 @@ selectedData_ae <- shiny::eventReactive(input$aes, {
   }
 })
 
+ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>%
+  mutate(
+    classes = factor(classes, levels = c("0 a 5%",
+                                         "5 a 10%",
+                                         "10 a 25%",
+                                         "25 a 40%",
+                                         "40 a 65%",
+                                         "> 65%")
+                     ),
+    classes_colors = factor(classes_colors, levels = c("#4575b4",
+                                                       "#91bfdb",
+                                                       "#e0f3f8",
+                                                       "#fee090",
+                                                       "#fc8d59",
+                                                       "#d62f26"))
+  ) %>% 
+  arrange(classes)
+
+
 selectedData_uc <- shiny::eventReactive(input$aes, {
   
   if (input$aes == "Todas") {
@@ -554,6 +609,8 @@ selectedData_uc <- shiny::eventReactive(input$aes, {
     dplyr::filter(str_detect(ae, input$aes))
   }
 })
+
+ 
 
 # output$plot1 <- renderPlot({
 #   palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
@@ -612,8 +669,12 @@ output$map <- renderLeaflet({
       fillOpacity = 1,
       weight = 1,
       group = "polygons"
-    )
-
+    ) %>% 
+    addLegend(
+      colors = unique(selectedData_uc()$classes_colors),
+      labels = unique(selectedData_uc()$classes),
+      title = "Perda de hábitat acumulada"
+      )
 })
 
 ```
