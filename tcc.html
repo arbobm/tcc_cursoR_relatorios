@@ -1,0 +1,2933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bruna Meneses, Lara Cortes, Flavia Batista (RAN/ICMBio)">
+
+<title>Perda de hábitat nas Unidades de Conservação do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="tcc_files/libs/clipboard/clipboard.min.js"></script>
+<script src="tcc_files/libs/quarto-html/quarto.js"></script>
+<script src="tcc_files/libs/quarto-html/popper.min.js"></script>
+<script src="tcc_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="tcc_files/libs/quarto-html/anchor.min.js"></script>
+<link href="tcc_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="tcc_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="tcc_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="tcc_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="tcc_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#apresentação" id="toc-apresentação" class="nav-link active" data-scroll-target="#apresentação">Apresentação</a></li>
+  <li><a href="#área-de-estudo" id="toc-área-de-estudo" class="nav-link" data-scroll-target="#área-de-estudo">Área de estudo</a></li>
+  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia">Metodologia</a>
+  <ul class="collapse">
+  <li><a href="#unidades-de-conservação" id="toc-unidades-de-conservação" class="nav-link" data-scroll-target="#unidades-de-conservação">Unidades de conservação</a></li>
+  <li><a href="#cobertura-do-solo" id="toc-cobertura-do-solo" class="nav-link" data-scroll-target="#cobertura-do-solo">Cobertura do solo</a></li>
+  <li><a href="#métricas-de-paisagem" id="toc-métricas-de-paisagem" class="nav-link" data-scroll-target="#métricas-de-paisagem">Métricas de paisagem</a></li>
+  </ul></li>
+  <li><a href="#fichas-para-cada-área-estratégica" id="toc-fichas-para-cada-área-estratégica" class="nav-link" data-scroll-target="#fichas-para-cada-área-estratégica">Fichas para cada área estratégica</a></li>
+  <li><a href="#resultados-preliminares" id="toc-resultados-preliminares" class="nav-link" data-scroll-target="#resultados-preliminares">Resultados preliminares</a>
+  <ul class="collapse">
+  <li><a href="#unidades-de-conservação-e-cobertura-do-solo" id="toc-unidades-de-conservação-e-cobertura-do-solo" class="nav-link" data-scroll-target="#unidades-de-conservação-e-cobertura-do-solo">Unidades de conservação e cobertura do solo</a></li>
+  <li><a href="#métricas-de-paisagem-1" id="toc-métricas-de-paisagem-1" class="nav-link" data-scroll-target="#métricas-de-paisagem-1">Métricas de paisagem</a></li>
+  </ul></li>
+  <li><a href="#próximos-passos" id="toc-próximos-passos" class="nav-link" data-scroll-target="#próximos-passos">Próximos passos</a></li>
+  <li><a href="#visualização-dos-resultados" id="toc-visualização-dos-resultados" class="nav-link" data-scroll-target="#visualização-dos-resultados">Visualização dos resultados</a></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Perda de hábitat nas Unidades de Conservação do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN)</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/arbobm/tcc_cursoR_relatorios/blob/main/tcc.qmd"><i class="bi"></i> Código</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bruna Meneses, Lara Cortes, Flavia Batista (RAN/ICMBio) </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-context="setup">
+
+</div>
+<div class="cell">
+
+</div>
+<section id="apresentação" class="level1">
+<h1>Apresentação</h1>
+<p>Os Planos de Ação Nacional para a Conservação das Espécies Ameaçadas de Extinção ou do Patrimônio Espeleológico (PANs) são instrumentos de gestão construídos em conjunto com a sociedade, adotados para promover a melhoria do estado de conservação dos ambientes naturais com ocorrência de espécies endêmicas ou ameaçadas de extinção <span class="citation" data-cites="icmbioIN212018">(<a href="#ref-icmbioIN212018" role="doc-biblioref">Brasil, 2018a</a>)</span>. Isso se dá por meio da identificação e orientação das ações prioritárias para combater as ameaças que põem em risco tanto populações de espécies como os ambientes em que vivem. O Centro Nacional de Pesquisa e Conservação de Répteis e Anfíbios (RAN/ICMBio), como uma de suas atribuições, coordena os PANs voltados a conservação da herpetofauna em risco de extinção no Brasil, podendo articular e implementar ações, além de monitorá-las e avaliá-las periodicamente. Mediante oficinas de planejamento participativas e um processo de monitoria e refinamento contínuo, envolvendo o acompanhamento de especialistas nas espécies e nos territórios, objetivos são identificados e, a partir deles, ações são recomendadas e implementadas <span class="citation" data-cites="guiaPAN2018">(<a href="#ref-guiaPAN2018" role="doc-biblioref">ICMBio, 2018</a>)</span>.</p>
+<p>O objetivo deste documento é identificação as unidades de conservação com maiores perdas de área de hábitat até 2021 e, assim, apoiar a identificação de áreas vulneráveis à perda e fragmentação de hábitat no interior e no entorno das unidades de conservação localizadas em áreas estratégicas do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; <span class="citation" data-cites="portariacerpan2018">Brasil (<a href="#ref-portariacerpan2018" role="doc-biblioref">2018b</a>)</span>). Essa identificação é uma das ações do CERPAN (ação 2.5), que busca promover a proteção e a conectividade dos hábitats das espécies-alvo. Para cumprir esse objetivo, foram estabelecidas as seguintes etapas:</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Etapa 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Etapa 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Etapa 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Etapa 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><strong>Seleção das Unidades de Conservação.</strong></p>
+<p>Lista das unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais localizadas nas áreas estratégicas do CERPAN.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>Reclassificação dos dados do Projeto MapBiomas (2011 e 2021)</strong></p>
+<p>Identificação das classes do MapBiomas consideradas hábitat para os grupos de espécies alvo do CERPAN (ictiofauna, herpetofauna e primatas).</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><strong>Estimativa da mudança na cobertura do solo em 10 anos</strong></p>
+<p>Álgebra de mapas para a identificação de áreas onde houve mudança e persistência das classes de hábitat e de não hábitat.</p>
+<!-- ## Etapa 4 -->
+<!-- **Métricas de paisagem** -->
+<!-- Estimativa de métricas de paisagem selecionadas para indicar áreas dentro e no entorno de UCs com perda e aumento da fragmentação de hábitat. -->
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><strong>Resultados preliminares</strong></p>
+<p>Elaboração de tabelas e figuras resultantes das análises e detalhamento das informações em fichas por área estratégica.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="área-de-estudo" class="level1">
+<h1>Área de estudo</h1>
+<p>O Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN; <span class="citation" data-cites="portariacerpan2018">Brasil (<a href="#ref-portariacerpan2018" role="doc-biblioref">2018b</a>)</span>) abrange integral ou parcialmente 13 estados das regiões Norte, Nordeste, Sudeste, Sul e Centro-oeste do Brasil (Rondônia, Pará, Tocantins, Maranhão, Piauí, Bahia, Minas Gerais, São Paulo, Paraná, Mato Grosso do Sul, Mato Grosso, Goiás e Distrito Federal), correspondendo a uma área total de aproximadamente 2.646.608 km². O CERPAN abrange os biomas cerrado e pantanal, além de parte da bacia dos rios Tocantins e Araguaia, localizada no bioma Amazônia. A cobertura do solo é majoritariamente composta por pastagem (27,08%), formação savânica (23,60%), formação florestal (20,76%), soja (7,70%) e formação campestre (6,29%) <span class="citation" data-cites="mapbiomas2022">(<a href="#ref-mapbiomas2022" role="doc-biblioref">Projeto MapBiomas, 2022</a>)</span>.</p>
+</section>
+<section id="metodologia" class="level1">
+<h1>Metodologia</h1>
+<section id="unidades-de-conservação" class="level2">
+<h2 class="anchored" data-anchor-id="unidades-de-conservação">Unidades de conservação</h2>
+<p>As unidades de conservação (UCs) de proteção integral e de uso sustentável federais, estaduais e municipais <span class="citation" data-cites="ucsmma2022 ucsicmbio2022">(<a href="#ref-ucsicmbio2022" role="doc-biblioref">ICMBio, 2022</a>; <a href="#ref-ucsmma2022" role="doc-biblioref">MMA, 2022</a>)</span> localizadas na área de abrangência do CERPAN foram consideradas.</p>
+</section>
+<section id="cobertura-do-solo" class="level2">
+<h2 class="anchored" data-anchor-id="cobertura-do-solo">Cobertura do solo</h2>
+<p>Os dados de cobertura do solo da Coleção 7 do Projeto MapBiomas <span class="citation" data-cites="mapbiomas2022">(<a href="#ref-mapbiomas2022" role="doc-biblioref">2022</a>)</span> referentes aos anos de 2011 e 2021 foram utilizados para estimativa das áreas de hábitat no interior das UCs e nas áreas de entorno. As classes presentes no intervalo de dez anos foram reclassificadas (<a href="#tbl-classes">Tabela&nbsp;1</a>). Com isso, as classes de uso e cobertura em cada ano foram categorizadas em hábitat e não hábitat para os grupos de espécies alvo do CERPAN. Este documento apresenta uma parte desses resultados, referentes a percentagem de perda de hábitat acumulada em cada UC até 2021.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-classes" class="anchored">
+
+<div id="otpoarusmh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#otpoarusmh) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#otpoarusmh) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#otpoarusmh) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#otpoarusmh) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#otpoarusmh) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#otpoarusmh) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#otpoarusmh) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#otpoarusmh) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#otpoarusmh) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#otpoarusmh) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#otpoarusmh) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#otpoarusmh) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#otpoarusmh) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#otpoarusmh) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#otpoarusmh) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#otpoarusmh) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#otpoarusmh) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#otpoarusmh) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#otpoarusmh) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#otpoarusmh) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#otpoarusmh) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#otpoarusmh) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#otpoarusmh) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#otpoarusmh) .gt_left {
+  text-align: left;
+}
+
+:where(#otpoarusmh) .gt_center {
+  text-align: center;
+}
+
+:where(#otpoarusmh) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#otpoarusmh) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#otpoarusmh) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#otpoarusmh) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#otpoarusmh) .gt_super {
+  font-size: 65%;
+}
+
+:where(#otpoarusmh) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#otpoarusmh) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#otpoarusmh) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#otpoarusmh) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#otpoarusmh) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#otpoarusmh) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#otpoarusmh) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table"><caption>Tabela&nbsp;1:  Classes MapBiomas. </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Classes</strong>"><strong>Classes</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Hábitat</strong>"><strong>Hábitat</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Classes" class="gt_row gt_left">Formação Florestal, Formação Savânica, Mangue, Restinga Arborizada, Campo Alagado e Área Pantanosa, Formação Campestre, Apicum, Afloramento Rochoso, Restinga Herbácea, Outras Formações não Florestais, Praia, Duna e Areal, Rio, Lago e Oceano</td>
+<td headers="Hábitat" class="gt_row gt_left">Sim</td></tr>
+    <tr><td headers="Classes" class="gt_row gt_left">Pastagem, Soja, Cana, Arroz, Algodão (beta), Outras Lavouras Temporárias, Café, Citrus, Outras Lavouras Perenes, Silvicultura (monocultura), Mosaico de Usos, Área Urbanizada, Mineração, Outras Áreas não Vegetadas, Aquicultura</td>
+<td headers="Hábitat" class="gt_row gt_left">Não</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<p>Os arquivos matriciais resultantes dessa reclassificação, os quais possuem <em>pixels</em> com valores 1 para hábitat e 0 para não hábitat, foram utilizados em uma série de álgebra de mapas que calcularam, para as áreas das UCs e de seus entornos:</p>
+<ul>
+<li>a perda de hábitat acumulada até cada ano;</li>
+<li>a perda de hábitat em dez anos (entre 2011 e 2021). Equivale à área que era hábitat no ano 1 e deixou de ser hábitat no ano 2;</li>
+<li>o “ganho” de hábitat em dez anos (2011 - 2021). Essa medida representa, o que não era hábitat no ano 1 e passou a ser no ano 2, sem especificar os meios pelos quais isso aconteceu nem implicar necessariamente em melhoria do hábitat, por não ser possível avaliar qualidade do sub-bosque, cobertura do solo, etc.;</li>
+<li>a área que permaneceu hábitat durante todo o período.</li>
+</ul>
+</section>
+<section id="métricas-de-paisagem" class="level2">
+<h2 class="anchored" data-anchor-id="métricas-de-paisagem">Métricas de paisagem</h2>
+<p>Para estimar a fragmentação das áreas de hábitat nas UCs e entorno, foram calculadas seis métricas de paisagem <span class="citation" data-cites="R-landscapemetrics">(<a href="#ref-R-landscapemetrics" role="doc-biblioref">Hesselbarth <em>et al.</em>, 2021</a>)</span>:</p>
+<ul>
+<li>Área de hábitat (km²):
+<ul>
+<li>é a soma das áreas de todos os fragmentos pertencentes a classe hábitat. A área de hábitat é uma medida absoluta, tornando difícil comparações entre paisagens com áreas totais diferentes, mas permitindo comparações de uma mesma área em anos diferentes;</li>
+</ul></li>
+<li>Porcentagem de remanescentes de hábitat na paisagem:
+<ul>
+<li>é a porcentagem da área de uma paisagem que corresponde a hábitat. Devido ao seu caráter relativo, é diretamente comparável entre paisagens de diferentes áreas;</li>
+</ul></li>
+<li>Número de fragmentos de hábitat:
+<ul>
+<li>descreve a fragmentação do hábitat, apesar de não conter necessariamente informação sobre a configuração do hábitat;</li>
+</ul></li>
+<li>Porcentagem ocupada pelo maior fragmento de hábitat:
+<ul>
+<li>é a porcentagem da paisagem coberta pelo maior fragmento de hábitat. É uma medida simples de dominância;</li>
+</ul></li>
+<li>Área média dos fragmentos de hábitat (km²):
+<ul>
+<li>média de todos os fragmentos de hábitat contidos na área avaliada. É uma forma simples de descrever a composição da paisagem. Se avaliada conjuntamente com a área total de hábitat, pode dar uma ideia de estrutura dos fragmentos (por exemplo, muitos fragmentos pequenos vs.&nbsp;poucos fragmentos grandes);</li>
+</ul></li>
+<li>Tamanho efetivo da malha (km²):
+<ul>
+<li>corresponde a razão entre o quadrado da área do fragmento de hábitat e a área total da paisagem avaliada. É uma medida relativa da estrutura do hábitat. Quanto maior o valor, menor a fragmentação.</li>
+</ul></li>
+</ul>
+<p>Toda a manipulação de dados foi feita utilizando a linguagem <code>R</code> <span class="citation" data-cites="R rstudio">(<a href="#ref-R" role="doc-biblioref">R Core Team, 2022</a>; <a href="#ref-rstudio" role="doc-biblioref">RStudio Team, 2022</a>)</span> e os pacotes <code>sf</code> <span class="citation" data-cites="R-sf">(<a href="#ref-R-sf" role="doc-biblioref">Pebesma, 2022</a>)</span>, <code>terra</code> <span class="citation" data-cites="R-terra">(<a href="#ref-R-terra" role="doc-biblioref">Hijmans, 2022</a>)</span>, <code>landscapemetrics</code> <span class="citation" data-cites="R-landscapemetrics">(<a href="#ref-R-landscapemetrics" role="doc-biblioref">Hesselbarth <em>et al.</em>, 2021</a>)</span> e <code>leaflet</code> <span class="citation" data-cites="R-leaflet">(<a href="#ref-R-leaflet" role="doc-biblioref">Cheng, Karambelkar &amp; Xie, 2022</a>)</span>.</p>
+</section>
+</section>
+<section id="fichas-para-cada-área-estratégica" class="level1">
+<h1>Fichas para cada área estratégica</h1>
+<p>Para cada área estratégica do CERPAN, foi elaborada uma ficha com resultados preliminares <a href="#fichas">Apêndice I</a>. As fichas estão divididas em três seções principais:</p>
+<ol type="1">
+<li>apresenta a localização da área estratégica dentro da área de abrangência do CERPAN e as unidades de conservação nela localizadas;</li>
+<li>apresenta a taxa de perda de hábitat até 2021 (perda de hábitat acumulada) e taxa de perda de hábitat em 10 anos (2011-2021);</li>
+<li>apresenta as métricas de paisagem calculadas para as áreas de hábitat presentes em 2011, em 2021 e a diferença entre os anos nas UCs e nas áreas do entorno. Valores negativos representam diminuição em 2021 e valores positivos significam que houve aumento.</li>
+</ol>
+</section>
+<section id="resultados-preliminares" class="level1">
+<h1>Resultados preliminares</h1>
+<section id="unidades-de-conservação-e-cobertura-do-solo" class="level2">
+<h2 class="anchored" data-anchor-id="unidades-de-conservação-e-cobertura-do-solo">Unidades de conservação e cobertura do solo</h2>
+<div class="cell">
+
+</div>
+<p>Ao todo, formam analisadas 167 unidades de conservação. Destas, 26 (15,57%) tem mais de 99% de hábitat no interior da UC (<a href="#tbl-habitatucs">Tabela&nbsp;2</a>), sendo que quatro tem menos de 80% de hábitat no raio de 3 km a partir da borda da UC (três são UCs de proteção integral; <a href="#tbl-habitatucs">Tabela&nbsp;2</a> e <a href="#fig-habitatucs">Figura&nbsp;1</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-habitatucs" class="anchored">
+
+<div id="xndlevrdzh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#xndlevrdzh) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#xndlevrdzh) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#xndlevrdzh) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#xndlevrdzh) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#xndlevrdzh) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#xndlevrdzh) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#xndlevrdzh) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#xndlevrdzh) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#xndlevrdzh) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#xndlevrdzh) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#xndlevrdzh) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#xndlevrdzh) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#xndlevrdzh) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#xndlevrdzh) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#xndlevrdzh) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#xndlevrdzh) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#xndlevrdzh) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#xndlevrdzh) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#xndlevrdzh) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#xndlevrdzh) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#xndlevrdzh) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#xndlevrdzh) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#xndlevrdzh) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#xndlevrdzh) .gt_left {
+  text-align: left;
+}
+
+:where(#xndlevrdzh) .gt_center {
+  text-align: center;
+}
+
+:where(#xndlevrdzh) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#xndlevrdzh) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#xndlevrdzh) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#xndlevrdzh) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#xndlevrdzh) .gt_super {
+  font-size: 65%;
+}
+
+:where(#xndlevrdzh) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#xndlevrdzh) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#xndlevrdzh) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#xndlevrdzh) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#xndlevrdzh) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#xndlevrdzh) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#xndlevrdzh) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table"><caption>Tabela&nbsp;2:  Unidades de Conservação (UC) com mais de 99% de hábitat no seu interior e no entorno em raios de 3 e 10 km a partir da borda da UC. </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Unidade de Conservação</strong>"><strong>Unidade de Conservação</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Área estratégica</strong>"><strong>Área estratégica</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Grupo</strong>"><strong>Grupo</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Esfera</strong>"><strong>Esfera</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>Hábitat (%)</strong>"><strong>Hábitat (%)</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="nome_abrev" class="gt_row gt_left">RPPN Sítio Grande</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PNM Uirapuru</td>
+<td headers="ae" class="gt_row gt_left">Cerrado Ocidental</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA do Pantanal Mato-Grossense</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ESEC de Taiamã</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">MONA Canyons e Corredeiras do Rio Sono</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ESEC Serra Geral do Tocantins</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Ilha do Combu</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">RPPN Rumo ao Oeste</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">Parq.Est. do Jalapão</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ESEC do Rio Preto</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ESEC Chapada de Nova Roma</td>
+<td headers="ae" class="gt_row gt_left">Veadeiros</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">Parq.Est. Águas do Cuiabá</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ARIE da Cabeceira do Córrego Mahana</td>
+<td headers="ae" class="gt_row gt_left">Veadeiros</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">Parq.Est. Encontro das Águas</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA Grande Sertão Veredas</td>
+<td headers="ae" class="gt_row gt_left">Veadeiros</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA do Araguaia</td>
+<td headers="ae" class="gt_row gt_left">Araguaia</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA do Arquipélago do Marajó</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ARIE Mata das Perobas Tim Ferreira</td>
+<td headers="ae" class="gt_row gt_left">Paranaíba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">100</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA das Nascentes do Rio Parnaíba</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">FLONA de Caxiuanâ</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA das Emas</td>
+<td headers="ae" class="gt_row gt_left">Emas</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">RESEX Gurupá-Melgaço</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA da Serra das Confusões</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PNM do Pequi</td>
+<td headers="ae" class="gt_row gt_left">Veadeiros</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA da Chapada das Mesas</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">ESEC de Uruçui-Una</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">99</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-habitatucs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="tcc_files/figure-html/fig-habitatucs-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;1: Relação entre a porcentagem de hábitat no interior das Unidade de Conservação (UC) com mais de 99% de hábitat e o entorno em raios de 3 e 10 km a partir da borda da UC.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>A UC REVIS Padre Sérgio Tonetto foi a UC com maior perda de hábitat em 10 anos. Esse resultado, porém, tem origem em um possível erro de interpretação da cobertura do solo na unidade de conservação nos dados referentes a 2021. Essa observação será reportada no <a href="https://forum.mapbiomas.org/">fórum oficial</a> do Projeto MapBiomas e avaliada posteriormente.</p>
+<p>Outras 27 UCs tiveram mais de 5% de suas áreas convertidas para classes de cobertura do solo consideradas como não hábitat. Algumas UCs apresentaram perda de hábitat no interior da UC maior do que no entorno (<a href="#tbl-perdaucs">Tabela&nbsp;3</a> e <a href="#fig-perdaucs">Figura&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-perdaucs" class="anchored">
+
+<div id="kkxjbhujew" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#kkxjbhujew) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#kkxjbhujew) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#kkxjbhujew) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#kkxjbhujew) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#kkxjbhujew) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#kkxjbhujew) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#kkxjbhujew) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#kkxjbhujew) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#kkxjbhujew) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#kkxjbhujew) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#kkxjbhujew) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#kkxjbhujew) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#kkxjbhujew) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#kkxjbhujew) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#kkxjbhujew) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#kkxjbhujew) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#kkxjbhujew) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#kkxjbhujew) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#kkxjbhujew) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#kkxjbhujew) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#kkxjbhujew) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#kkxjbhujew) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#kkxjbhujew) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#kkxjbhujew) .gt_left {
+  text-align: left;
+}
+
+:where(#kkxjbhujew) .gt_center {
+  text-align: center;
+}
+
+:where(#kkxjbhujew) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#kkxjbhujew) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#kkxjbhujew) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#kkxjbhujew) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#kkxjbhujew) .gt_super {
+  font-size: 65%;
+}
+
+:where(#kkxjbhujew) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#kkxjbhujew) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#kkxjbhujew) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#kkxjbhujew) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#kkxjbhujew) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#kkxjbhujew) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#kkxjbhujew) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table"><caption>Tabela&nbsp;3:  Unidades de Conservação (UC) com mais de 5% de perda de hábitat em 10 anos no seu interior e no entorno em raios de 3 e 10 km a partir da borda da UC. </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Unidade de Conservação</strong>"><strong>Unidade de Conservação</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Área estratégica</strong>"><strong>Área estratégica</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Grupo</strong>"><strong>Grupo</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Esfera</strong>"><strong>Esfera</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>Não hábitat (%)</strong>"><strong>Não hábitat (%)</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="nome_abrev" class="gt_row gt_left">REVIS Padre Sérgio Tonetto</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">84</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">RDS Campo das Mangabas</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">33</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">Parq.Est. da Serra dos Martírios/Andorinhas</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">29</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Serra da Tabatinga</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">19</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PNM de Castanhal/Pará</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">17</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Baixada Maranhense</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">16</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA de São Geraldo do Araguaia</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">12</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Bacia do Rio de Janeiro</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">11</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Municipal do Aricá-Açu</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">10</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Ilha do Bananal/Cantão</td>
+<td headers="ae" class="gt_row gt_left">Araguaia</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">10</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Tanquã-Rio Piracicaba</td>
+<td headers="ae" class="gt_row gt_left">Cerrado Paulista</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">9</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">RPPN Capoeira do Boi</td>
+<td headers="ae" class="gt_row gt_left">Paranaíba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">9</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Foz do Rio Santa Tereza</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">8</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Lago de Sobradinho</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">8</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA do Salto Magessi</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">7</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA dos Lençois Maranhenses</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="uc" class="gt_row gt_right">7</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PNM Entre Trevos</td>
+<td headers="ae" class="gt_row gt_left">Paranaíba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">7</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PNM Claudino Francio</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="uc" class="gt_row gt_right">7</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA das Cabeceiras do Rio Cuiabá</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">6</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Lago de Palmas</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">6</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Nascentes do Rio Paraguai</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">6</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Região Metrolpolitana de Belém</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">6</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">REBIO do Rio Descoberto</td>
+<td headers="ae" class="gt_row gt_left">Paranaíba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">MONA das Árvores Fossilizadas do Estado do Tocantins</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Chapada dos Guimarães</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA do Lago de Tucurui</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">Parq.Est. do Utinga</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">5</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Lago de Peixe/Angical</td>
+<td headers="ae" class="gt_row gt_left">Veadeiros</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="uc" class="gt_row gt_right">5</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-perdaucs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="tcc_files/figure-html/fig-perdaucs-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2: Relação entre a perda de hábitat em 10 anos no interior das Unidade de Conservação (UC) com mais de 5% da área convertida e o entorno em raios de 3 e 10 km a partir da borda da UC.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="métricas-de-paisagem-1" class="level2">
+<h2 class="anchored" data-anchor-id="métricas-de-paisagem-1">Métricas de paisagem</h2>
+<p>A unidade de conservação que mais perdeu área de hábitat em 10 anos, em números absolutos, a APA da Baixada Maranhense, localizada na área estratégica denominada Maranhão-Pará, também foi a que mais aumentou em número de fragmentos no interior da UC. A <a href="#tbl-ucsmetricasp">Tabela&nbsp;4</a> mostra os resultados de todas as métricas de paisagem para as 20 UCs que tiveram maior perda de tamanho efetivo da malha de hábitat no interior da UC.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-ucsmetricasp" class="anchored">
+
+<div id="fhoxjewbri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#fhoxjewbri) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#fhoxjewbri) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#fhoxjewbri) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#fhoxjewbri) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#fhoxjewbri) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#fhoxjewbri) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#fhoxjewbri) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#fhoxjewbri) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#fhoxjewbri) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#fhoxjewbri) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#fhoxjewbri) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#fhoxjewbri) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#fhoxjewbri) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#fhoxjewbri) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#fhoxjewbri) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#fhoxjewbri) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#fhoxjewbri) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#fhoxjewbri) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#fhoxjewbri) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#fhoxjewbri) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#fhoxjewbri) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#fhoxjewbri) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#fhoxjewbri) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#fhoxjewbri) .gt_left {
+  text-align: left;
+}
+
+:where(#fhoxjewbri) .gt_center {
+  text-align: center;
+}
+
+:where(#fhoxjewbri) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#fhoxjewbri) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#fhoxjewbri) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#fhoxjewbri) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#fhoxjewbri) .gt_super {
+  font-size: 65%;
+}
+
+:where(#fhoxjewbri) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#fhoxjewbri) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#fhoxjewbri) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#fhoxjewbri) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#fhoxjewbri) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#fhoxjewbri) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#fhoxjewbri) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table"><caption>Tabela&nbsp;4:  Métricas da paisagem das 20 unidades de conservação com maior perda de malha efetiva de hábitat no interior das Unidades de Conservação. Os valores correspondem a diferença entre os anos de 2021 e 2011. Valores negativos representam diminuição em 10 anos, e resultados positivos representam aumento. </caption>
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Unidade de Conservação</strong>"><strong>Unidade de Conservação</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Área estratégica</strong>"><strong>Área estratégica</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Grupo</strong>"><strong>Grupo</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Esfera</strong>"><strong>Esfera</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>ca</strong>"><strong>ca</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>np</strong>"><strong>np</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>lpi</strong>"><strong>lpi</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>area_mn</strong>"><strong>area_mn</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<strong>mesh</strong>"><strong>mesh</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Baixada Maranhense</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−1.786,23</td>
+<td headers="np" class="gt_row gt_right">7.919,00</td>
+<td headers="lpi" class="gt_row gt_right">−11,83</td>
+<td headers="area_mn" class="gt_row gt_right">−0,58</td>
+<td headers="mesh" class="gt_row gt_right">−2.783,44</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Lago de Sobradinho</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−747,80</td>
+<td headers="np" class="gt_row gt_right">2.137,00</td>
+<td headers="lpi" class="gt_row gt_right">−10,96</td>
+<td headers="area_mn" class="gt_row gt_right">−0,33</td>
+<td headers="mesh" class="gt_row gt_right">−1.832,29</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Ilha do Bananal/Cantão</td>
+<td headers="ae" class="gt_row gt_left">Araguaia</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−824,99</td>
+<td headers="np" class="gt_row gt_right">1.154,00</td>
+<td headers="lpi" class="gt_row gt_right">−5,37</td>
+<td headers="area_mn" class="gt_row gt_right">−0,44</td>
+<td headers="mesh" class="gt_row gt_right">−1.030,07</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA do Rio Preto</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−514,14</td>
+<td headers="np" class="gt_row gt_right">254,00</td>
+<td headers="lpi" class="gt_row gt_right">−4,44</td>
+<td headers="area_mn" class="gt_row gt_right">−3,03</td>
+<td headers="mesh" class="gt_row gt_right">−881,27</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA das Reentrâncias Maranhenses</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−446,10</td>
+<td headers="np" class="gt_row gt_right">1.097,00</td>
+<td headers="lpi" class="gt_row gt_right">−4,15</td>
+<td headers="area_mn" class="gt_row gt_right">−2,63</td>
+<td headers="mesh" class="gt_row gt_right">−806,91</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Dunas e Veredas do Baixo Médio São Francisco</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−201,89</td>
+<td headers="np" class="gt_row gt_right">1.082,00</td>
+<td headers="lpi" class="gt_row gt_right">−2,43</td>
+<td headers="area_mn" class="gt_row gt_right">−0,78</td>
+<td headers="mesh" class="gt_row gt_right">−450,75</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Bacia do Rio de Janeiro</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−364,09</td>
+<td headers="np" class="gt_row gt_right">33,00</td>
+<td headers="lpi" class="gt_row gt_right">−9,50</td>
+<td headers="area_mn" class="gt_row gt_right">−0,77</td>
+<td headers="mesh" class="gt_row gt_right">−313,75</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA de Upaon-Açu / Miritiba / Alto Preguiças</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−197,64</td>
+<td headers="np" class="gt_row gt_right">477,00</td>
+<td headers="lpi" class="gt_row gt_right">−1,09</td>
+<td headers="area_mn" class="gt_row gt_right">−0,89</td>
+<td headers="mesh" class="gt_row gt_right">−272,50</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Pouso Alto</td>
+<td headers="ae" class="gt_row gt_left">Veadeiros</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−128,24</td>
+<td headers="np" class="gt_row gt_right">201,00</td>
+<td headers="lpi" class="gt_row gt_right">−1,63</td>
+<td headers="area_mn" class="gt_row gt_right">−1,04</td>
+<td headers="mesh" class="gt_row gt_right">−236,39</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA das Cabeceiras do Rio Cuiabá</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−159,94</td>
+<td headers="np" class="gt_row gt_right">14,00</td>
+<td headers="lpi" class="gt_row gt_right">−3,34</td>
+<td headers="area_mn" class="gt_row gt_right">−0,11</td>
+<td headers="mesh" class="gt_row gt_right">−222,13</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA do Lago de Tucurui</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−109,31</td>
+<td headers="np" class="gt_row gt_right">15,00</td>
+<td headers="lpi" class="gt_row gt_right">−2,14</td>
+<td headers="area_mn" class="gt_row gt_right">−0,07</td>
+<td headers="mesh" class="gt_row gt_right">−181,23</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA dos Lençois Maranhenses</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="ca" class="gt_row gt_right">−80,23</td>
+<td headers="np" class="gt_row gt_right">563,00</td>
+<td headers="lpi" class="gt_row gt_right">−5,56</td>
+<td headers="area_mn" class="gt_row gt_right">−5,18</td>
+<td headers="mesh" class="gt_row gt_right">−152,03</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Chapada dos Guimarães</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−62,97</td>
+<td headers="np" class="gt_row gt_right">201,00</td>
+<td headers="lpi" class="gt_row gt_right">−4,45</td>
+<td headers="area_mn" class="gt_row gt_right">−0,57</td>
+<td headers="mesh" class="gt_row gt_right">−149,96</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Serra da Tabatinga</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="ca" class="gt_row gt_right">−70,60</td>
+<td headers="np" class="gt_row gt_right">−76,00</td>
+<td headers="lpi" class="gt_row gt_right">−35,14</td>
+<td headers="area_mn" class="gt_row gt_right">1,18</td>
+<td headers="mesh" class="gt_row gt_right">−77,59</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Municipal do Aricá-Açu</td>
+<td headers="ae" class="gt_row gt_left">Mato Grosso</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Municipal</td>
+<td headers="ca" class="gt_row gt_right">−51,78</td>
+<td headers="np" class="gt_row gt_right">135,00</td>
+<td headers="lpi" class="gt_row gt_right">−8,90</td>
+<td headers="area_mn" class="gt_row gt_right">−0,31</td>
+<td headers="mesh" class="gt_row gt_right">−77,55</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">PARNA das Nascentes do Rio Parnaíba</td>
+<td headers="ae" class="gt_row gt_left">Matopiba</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Federal</td>
+<td headers="ca" class="gt_row gt_right">−32,26</td>
+<td headers="np" class="gt_row gt_right">3,00</td>
+<td headers="lpi" class="gt_row gt_right">−0,43</td>
+<td headers="area_mn" class="gt_row gt_right">−210,80</td>
+<td headers="mesh" class="gt_row gt_right">−64,36</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA da Foz do Rio das Preguiças - Pequenos Lençóis - Região Lagunar Adjacente</td>
+<td headers="ae" class="gt_row gt_left">Maranhão-Pará</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−31,54</td>
+<td headers="np" class="gt_row gt_right">122,00</td>
+<td headers="lpi" class="gt_row gt_right">−1,60</td>
+<td headers="area_mn" class="gt_row gt_right">−11,54</td>
+<td headers="mesh" class="gt_row gt_right">−62,89</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Foz do Rio Santa Tereza</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−23,23</td>
+<td headers="np" class="gt_row gt_right">15,00</td>
+<td headers="lpi" class="gt_row gt_right">−9,86</td>
+<td headers="area_mn" class="gt_row gt_right">−0,24</td>
+<td headers="mesh" class="gt_row gt_right">−56,73</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">Parq.Est. da Serra dos Martírios/Andorinhas</td>
+<td headers="ae" class="gt_row gt_left">Tocantins</td>
+<td headers="grupo" class="gt_row gt_left">PI</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−49,41</td>
+<td headers="np" class="gt_row gt_right">450,00</td>
+<td headers="lpi" class="gt_row gt_right">−19,15</td>
+<td headers="area_mn" class="gt_row gt_right">−0,50</td>
+<td headers="mesh" class="gt_row gt_right">−47,29</td></tr>
+    <tr><td headers="nome_abrev" class="gt_row gt_left">APA Tanquã-Rio Piracicaba</td>
+<td headers="ae" class="gt_row gt_left">Cerrado Paulista</td>
+<td headers="grupo" class="gt_row gt_left">US</td>
+<td headers="esfera" class="gt_row gt_left">Estadual</td>
+<td headers="ca" class="gt_row gt_right">−14,10</td>
+<td headers="np" class="gt_row gt_right">78,00</td>
+<td headers="lpi" class="gt_row gt_right">−22,76</td>
+<td headers="area_mn" class="gt_row gt_right">−1,38</td>
+<td headers="mesh" class="gt_row gt_right">−44,46</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="próximos-passos" class="level1">
+<h1>Próximos passos</h1>
+<ul>
+<li>Relacionar os resultados entre as áreas avaliadas (interior da UC, entornos nos raios de 3 e 10 km) para entender quais UCs estão sob maior pressão de aumento da fragmentação;</li>
+<li>Identificar UCs mais críticas;</li>
+<li>Comparar se há diferenças entre os resultados das UCs dos diferentes grupos (proteção integral e uso sustentável) assim como nas diferentes esferas (federal, estadual e municipal);</li>
+<li>Melhorar a visualização das áreas estratégicas com poucas UCs e/ou UCs muito pequenas;</li>
+<li>Finalizar análises e discussão para relatório final.</li>
+</ul>
+</section>
+<section id="visualização-dos-resultados" class="level1">
+<h1>Visualização dos resultados</h1>
+<!-- leaflet -->
+<div class="cell">
+
+</div>
+<div class="panel-grid layout-sidebar ms-md-0 layout-sidebar-left">
+<div class="cell panel-sidebar card bg-light p-2 g-col-24 g-col-lg-7">
+<div class="cell-output-display no-overflow-x">
+<div class="form-group shiny-input-container">
+<label class="control-label" id="aes-label" for="aes">
+<h4 class="anchored" data-anchor-id="visualização-dos-resultados">Áreas estratégicas:</h4>
+</label>
+<div>
+<select id="aes" class="form-control"><option value="Todas" selected="">Todas</option>
+<option value="Araguaia">Araguaia</option>
+<option value="Cerrado Ocidental">Cerrado Ocidental</option>
+<option value="Cerrado Paulista">Cerrado Paulista</option>
+<option value="Cerrado Sul Matogrossense">Cerrado Sul Matogrossense</option>
+<option value="Emas">Emas</option>
+<option value="Maranhão-Pará">Maranhão-Pará</option>
+<option value="Mato Grosso">Mato Grosso</option>
+<option value="Matopiba">Matopiba</option>
+<option value="Paranaíba">Paranaíba</option>
+<option value="Tocantins">Tocantins</option>
+<option value="Veadeiros">Veadeiros</option></select>
+<script type="application/json" data-for="aes">{"plugins":["selectize-plugin-a11y"]}</script>
+</div>
+</div>
+</div>
+</div>
+<div class="panel-fill panel-grid g-col-24 g-col-lg-17 pt-3 pt-lg-0">
+<div class="g-col-24">
+<div class="cell panel-fill">
+<div class="cell-output-display">
+<p></p><div id="map" style="width:100%; height:400px; " class="leaflet html-widget html-widget-output"></div><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-context="server">
+
+</div>
+</section>
+<section id="referências" class="level1">
+<h1>Referências</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-icmbioIN212018" class="csl-entry" role="doc-biblioentry">
+Brasil (2018a). <a href="https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/55878820/do1-2018-12-19-instrucao-normativa-n-21-de-18-de-dezembro-de-2018-55878683">Instrução Normativa nº 21, de 18 de dezembro de 2018</a>
+</div>
+<div id="ref-portariacerpan2018" class="csl-entry" role="doc-biblioentry">
+Brasil (2018b). <a href="https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/pan/pan-cerpan">Portaria Nº 293, de 9 de Abril de 2018</a>
+</div>
+<div id="ref-R-leaflet" class="csl-entry" role="doc-biblioentry">
+Cheng J., Karambelkar B. &amp; Xie Y. (2022). <em><a href="https://CRAN.R-project.org/package=leaflet">Leaflet: <span>Create</span> Interactive Web Maps with the <span>JavaScript</span> ’leaflet’ Library</a></em>.
+</div>
+<div id="ref-R-landscapemetrics" class="csl-entry" role="doc-biblioentry">
+Hesselbarth M.H.K., Sciaini M., Nowosad J. &amp; Hanss S. (2021). <em><a href="https://r-spatialecology.github.io/landscapemetrics/">Landscapemetrics: <span>Landscape</span> Metrics for Categorical Map Patterns</a></em>.
+</div>
+<div id="ref-R-terra" class="csl-entry" role="doc-biblioentry">
+Hijmans R.J. (2022). <em><a href="https://rspatial.org/terra/">Terra: <span>Spatial</span> Data Analysis</a></em>.
+</div>
+<div id="ref-guiaPAN2018" class="csl-entry" role="doc-biblioentry">
+ICMBio (2018). <em><a href="https://www.icmbio.gov.br/portal/faunabrasileira/2742-plano-de-acao-saiba-mais.html">Guia Para Gestão de Planos de Ação Nacional Para a Conservação Das Espécies Ameaçadas de Extinção: <span>PAN</span> - Elabore - Monitore - Avalie</a></em>. <span>Brasilia: ICMBio.</span>
+</div>
+<div id="ref-ucsicmbio2022" class="csl-entry" role="doc-biblioentry">
+ICMBio (2022). <a href="https://www.gov.br/icmbio/pt-br/servicos/geoprocessamento/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais">Unidades de Conservação Federais - Shp</a>
+</div>
+<div id="ref-ucsmma2022" class="csl-entry" role="doc-biblioentry">
+MMA (2022). <a href="https://dados.mma.gov.br/dataset/unidadesdeconservacao/resource/9ec98f66-44ad-4397-8583-a1d9cc3a9835">Unidades de Conservação - Polígno CNUC 2022_07</a>
+</div>
+<div id="ref-R-sf" class="csl-entry" role="doc-biblioentry">
+Pebesma E. (2022). <em><a href="https://CRAN.R-project.org/package=sf">Sf: <span>Simple</span> Features for <span>R</span></a></em>.
+</div>
+<div id="ref-mapbiomas2022" class="csl-entry" role="doc-biblioentry">
+Projeto MapBiomas (2022). <a href="https://mapbiomas.org">Coleção 7 Da Série Anual de Mapas de Cobertura e Uso de Solo Do <span>Brasil</span></a>
+</div>
+<div id="ref-R" class="csl-entry" role="doc-biblioentry">
+R Core Team (2022). <em><a href="https://www.R-project.org/">R: <span>A</span> Language and Environment for Statistical Computing</a></em>. <span>R Foundation for Statistical Computing</span>, <span>Vienna, Austria</span>.
+</div>
+<div id="ref-rstudio" class="csl-entry" role="doc-biblioentry">
+RStudio Team (2022). <em><a href="http://www.rstudio.com/"><span>RStudio</span>: <span>Integrated</span> Development Environment for <span>R</span></a></em>. <span>RStudio, PBC</span>, <span>Boston, MA</span>.
+</div>
+</div>
+<p>
+<script type="application/shiny-prerendered" data-context="server-start">
+
+## ----pacotes-------------------------------------------------------
+# Carregar pacotes:
+
+library(shiny)
+library(magrittr)
+library(readxl)
+library(ggrepel)
+library(patchwork)
+library(stringr)
+library(dplyr)
+library(leaflet)
+
+## funcoes ------------
+source("funcoes.R")
+
+## labels --------------------------
+
+cores_ucs <- c("PI" = "#9dce45", "US" = "#ffa338")
+labels_ucs <- c("PI" = "Proteção Integral", "US" = "Uso Sutentável")
+labels_areas <- c("UC", "3 km", "10 km") 
+
+
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+library(shinydashboard)
+aes_cerpan_wgs84 <- sf::read_sf("shapes/aes_cerpan_wgs84.shp")
+ucsjuntas_wgs84_dados <- sf::read_sf("shapes/ucsjuntas_wgs84_dados.shp")
+
+ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>% 
+  mutate(classes_colors =
+           case_when(
+             classes == "0 a 5%" ~ "#4575b4", 
+             classes == "5 a 10%" ~ "#91bfdb", 
+             classes == "10 a 25%" ~ "#e0f3f8", 
+             classes == "25 a 40%" ~ "#fee090",
+             classes == "40 a 65%" ~ "#fc8d59", 
+             classes == "> 65%" ~ "#d62f26"
+           )
+  )
+
+
+selectedData_ae <- shiny::eventReactive(input$aes, {
+  
+  if (input$aes == "Todas") {
+    
+    aes_cerpan_wgs84
+    
+  } else {
+  
+  aes_cerpan_wgs84 %>% 
+    # dplyr::filter(nome_AE == "Araguaia")
+    dplyr::filter(nome_AE == input$aes)
+  }
+})
+
+ucsjuntas_wgs84_dados <- ucsjuntas_wgs84_dados %>%
+  mutate(
+    classes = factor(classes, levels = c("0 a 5%",
+                                         "5 a 10%",
+                                         "10 a 25%",
+                                         "25 a 40%",
+                                         "40 a 65%",
+                                         "> 65%")
+                     ),
+    classes_colors = factor(classes_colors, levels = c("#4575b4",
+                                                       "#91bfdb",
+                                                       "#e0f3f8",
+                                                       "#fee090",
+                                                       "#fc8d59",
+                                                       "#d62f26"))
+  ) %>% 
+  arrange(classes)
+
+
+selectedData_uc <- shiny::eventReactive(input$aes, {
+  
+  if (input$aes == "Todas") {
+    
+    ucsjuntas_wgs84_dados
+    
+  } else {
+  
+  ucsjuntas_wgs84_dados %>% 
+    # dplyr::filter(str_detect(ae, "Araguaia"))
+    dplyr::filter(str_detect(ae, input$aes))
+  }
+})
+
+ 
+
+# output$plot1 <- renderPlot({
+#   palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+#     "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
+# 
+#   par(mar = c(5.1, 4.1, 0, 1))
+#   plot(selectedData(),
+#        col = clusters()$cluster,
+#        pch = 20, cex = 3)
+#   points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
+# })
+
+output$map <- renderLeaflet({
+  
+  leaflet() %>% 
+    addMapPane("background", zIndex = 0) %>%        # Level 1: bottom
+    addMapPane("polygons", zIndex = 1) %>%          # Level 2: middle
+    addMapPane("rasters", zIndex = 100000) %>%      # Level 3: middle
+    addMapPane("points", zIndex = 440) %>%          # Level 4: middle
+    addMapPane("labels", zIndex = 450) %>%          # Level 5: top
+    
+    addWMSTiles('http://ows.mundialis.de/services/service?', layers='TOPO-WMS', group="Topography", options = pathOptions(pane = "background")) %>%
+    addProviderTiles(providers$Esri.WorldStreetMap, group="Open Street Map", options = pathOptions(pane = "background")) %>%
+    addProviderTiles(providers$Esri.WorldTerrain, group="Terrain", options = pathOptions(pane = "background")) %>%
+    addProviderTiles(providers$Esri.WorldImagery, group="Satellite", options = pathOptions(pane = "background")) %>%
+    
+    
+    addLayersControl(
+      baseGroups = c("Satellite", "Terrain", "Topography", "Open Street Map"),
+      options = layersControlOptions(collapsed = F, position = "bottomright")
+    ) %>%
+    addScaleBar(position = c("bottomleft"), options = scaleBarOptions()) %>% 
+    # 
+    # ## add limite do cerpan
+    # addPolygons(
+    #   data = lim_cerpan_s2k,
+    #   fillOpacity = 0,
+    #   color = "gray",
+    #   weight = 1
+    # ) %>% 
+    # 
+    # ## add limites das áreas estratégicas
+    addPolygons(
+      data = selectedData_ae(),
+      # data = aes_cerpan,
+      fillOpacity = 0,
+      color = "darkgray",
+      weight = 1,
+      group = "polygons"
+    ) %>% 
+    
+    # add ucs
+    addPolygons(
+      data = selectedData_uc(),
+      fillColor = selectedData_uc()$classes_colors,
+      fillOpacity = 1,
+      weight = 1,
+      group = "polygons"
+    ) %>% 
+    addLegend(
+      colors = unique(selectedData_uc()$classes_colors),
+      labels = unique(selectedData_uc()$classes),
+      title = "Perda de hábitat acumulada"
+      )
+})
+
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server-extras">
+ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
+  quos <- rlang::enquos(...)
+  vars <- rlang::list2(...)
+  nm <- names(vars)
+  if (is.null(nm)) {
+    nm <- rep_len("", length(vars))
+  }
+  mapply(function(q, nm, val) {
+    # Infer name, if possible
+    if (nm == "") {
+      tryCatch({
+        nm <- rlang::as_name(q)
+      }, error = function(e) {
+        code <- paste(collapse = "\n", deparse(rlang::f_rhs(q)))
+        stop("ojs_define() could not create a name for the argument: ", code)
+      })
+    }
+    .session$output[[nm]] <- val
+    outputOptions(.session$output, nm, suspendWhenHidden = FALSE)
+    .session$sendCustomMessage("ojs-export", list(name = nm))
+    NULL
+  }, quos, nm, vars, SIMPLIFY = FALSE, USE.NAMES = FALSE)
+  invisible()
+}
+</script>
+</p>
+<!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="dependencies">
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["selectize"]},{"type":"character","attributes":{},"value":["0.12.4"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["www/shared/selectize"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["js/selectize.min.js","accessibility/js/selectize-plugin-a11y.min.js"]},{"type":"character","attributes":{},"value":["css/selectize.bootstrap3.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["shiny"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["1.7.3"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets"]},{"type":"character","attributes":{},"value":["1.5.4"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["www"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["htmlwidgets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["htmlwidgets"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["1.5.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.12.4"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets/lib/jquery"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.1.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["leaflet"]},{"type":"character","attributes":{},"value":["1.3.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets/lib/leaflet"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet.js"]},{"type":"character","attributes":{},"value":["leaflet.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.1.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["leafletfix"]},{"type":"character","attributes":{},"value":["1.0.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets/lib/leafletfix"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leafletfix.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.1.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["proj4"]},{"type":"character","attributes":{},"value":["2.6.2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets/plugins/Proj4Leaflet"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["proj4.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["2.1.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["Proj4Leaflet"]},{"type":"character","attributes":{},"value":["1.0.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets/plugins/Proj4Leaflet"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["proj4leaflet.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["2.1.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["rstudio_leaflet"]},{"type":"character","attributes":{},"value":["1.3.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets/lib/rstudio_leaflet"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rstudio_leaflet.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.1.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["leaflet-binding"]},{"type":"character","attributes":{},"value":["2.1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["htmlwidgets"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["leaflet"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["2.1.1"]}]}]}
+</script>
+<!--/html_preserve-->
+<!--html_preserve-->
+
+<script type="application/shiny-prerendered" data-context="execution_dependencies">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78]}},"value":[{"type":"character","attributes":{},"value":["assertthat","base","bslib","cellranger","class","classInt","cli","colorspace","commonmark","compiler","crosstalk","datasets","DBI","digest","dplyr","e1071","ellipsis","evaluate","fansi","farver","fastmap","generics","ggplot2","ggrepel","glue","graphics","grDevices","grid","gt","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","KernSmooth","knitr","labeling","later","leaflet","lifecycle","magrittr","methods","mime","munsell","patchwork","pillar","pkgconfig","promises","proxy","purrr","R6","Rcpp","readxl","rlang","rmarkdown","rstudioapi","s2","sass","scales","sf","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tools","units","utf8","utils","vctrs","withr","wk","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","4.2.2","0.3.1","1.1.0","7.3-20","0.4-7","3.4.1","2.0-3","1.8.1","4.2.2","1.2.0","4.2.2","1.1.3","0.6.29","1.0.10","1.7-11","0.3.2","0.19","1.0.3","2.1.1","1.1.0","0.1.3","3.4.0","0.9.2","1.6.2","4.2.2","4.2.2","4.2.2","0.8.0","0.3.1","0.5.2","1.5.4","1.6.6","0.1.4","1.8.4","2.23-20","1.41","0.4.2","1.3.0","2.1.1","1.0.3","2.0.3","4.2.2","0.12","0.5.0","1.1.2","1.8.1","2.0.3","1.2.0.1","0.4-27","0.3.4","2.5.1","1.0.9","1.4.0","1.0.6","2.14","0.14","1.0.7","0.4.1","1.2.1","1.0-7","1.7.3","4.2.2","1.7.8","1.5.0","3.1.8","1.2.1","1.2.0","4.2.2","0.8-0","1.2.2","4.2.2","0.5.1","2.5.0","0.6.0","0.35","1.8-4","2.3.6"]}]}]}
+</script>
+<!--/html_preserve-->
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
