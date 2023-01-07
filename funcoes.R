@@ -96,7 +96,7 @@ list_names <- function(column) {
   
   first_part <- paste0(lista[1:lim], collapse = ", ")
   last_part <- lista[length(lista)]
-  fim <- paste0(first_part, " e ", last_part, ".")
+  fim <- paste0(first_part, " e ", last_part)
   
   return(fim)
 }
