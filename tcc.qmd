@@ -1,5 +1,5 @@
 ---
-title: "Perda de hábitat nas Unidades de Conservação do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN)"
+title: "Perda de hábitat nas Unidades de Conservação do Plano de Ação Nacional para a Conservação das Espécies Ameaçadas da Ictiofauna, Herpetofauna e Primatas do Cerrado e Pantanal (CERPAN) - Relatório preliminar"
 author: "Bruna Meneses, Lara Cortes, Flavia Batista (RAN/ICMBio)"
 format:
   html:
