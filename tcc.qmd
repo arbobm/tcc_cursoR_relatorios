@@ -9,7 +9,7 @@ format:
     toc: true
     toc-location: left
 server: shiny
-self-contained: true
+self-contained: false
 # code-fold: true
 knitr:
   opts_chunk: 
@@ -437,7 +437,7 @@ A unidade de conservação que mais perdeu área de hábitat em 10 anos, em núm
 
 ```{r}
 #| label: tbl-ucsmetricasp
-#| tbl-cap: "Métricas da paisagem das 20 unidades de conservação com maior perda de malha efetiva de hábitat no interior das Unidades de Conservação. Os valores correspondem a diferença entre os anos de 2021 e 2011. Valores negativos representam diminuição em 10 anos, e resultados positivos representam aumento."
+#| tbl-cap: "Métricas da paisagem das 20 unidades de conservação com maior perda de malha efetiva de hábitat no interior das Unidades de Conservação. Os valores correspondem a diferença entre os anos de 2021 e 2011. Valores negativos representam diminuição em 10 anos, e resultados positivos representam aumento. ca - Área de hábitat (km²); np - Número de fragmentos de hábitat; lp - Porcentagem de remanescentes de hábitat na paisagem."
 
 # ucs_aes
 
