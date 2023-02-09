@@ -1,0 +1,15 @@
+name: relatorio_cursoR
+title: relatorio_cursoR
+username:
+account: brunaarbo
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8259893
+bundleId: 6824842
+url: https://brunaarbo.shinyapps.io/relatorio_cursoR/
+when: 1675885229.66042
+lastSyncTime: 1675885229.66043
+quarto_version: 1.2.280
+quarto_engines: knitr
+asMultiple: FALSE
+asStatic: FALSE

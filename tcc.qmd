@@ -36,6 +36,8 @@ library(patchwork)
 library(stringr)
 library(dplyr)
 library(leaflet)
+library(sf)
+library(terra)
 
 ## funcoes ------------
 source("funcoes.R")
